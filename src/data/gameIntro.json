@@ -1,0 +1,59 @@
+{
+  "introduction": {
+    "title": "The Hunt of the Urban Griffin",
+    "sections": [
+      {
+        "text": "Welcome to The Hunt of the Urban Griffin.\n\nI'm the Keeper.\n\nYou've been selected from thousands of other children.\nNot by luck.\nThe Urban Griffin noticed you — your curiosity, your ability to solve puzzles, and the way you pay attention to things other people miss."
+      },
+      {
+        "text": "What is the Griffin, you ask?\n\nLet me explain.\n\nMost people in New York never look up.\nThey're too busy rushing, staring at screens, walking past extraordinary things without noticing any of them.\nThat's why almost nobody has ever seen the Urban Griffin."
+      },
+      {
+        "text": "The Griffin has the wings of a falcon, the strength of a lion, and feathers that catch sunlight like polished metal.\nIt's quiet, wise, and curious.\nAnd it only appears during the city's biggest moments —\nwhen something new is being built,\nwhen an idea is about to change everything,\nwhen New York is transforming."
+      },
+      {
+        "text": "There are old stories about it:\n\n- Workers saw a shadow sweep across the ceiling of Grand Central while the stars were being painted.\n\n- A breeze — gentle but perfectly timed — steadied the torch of the Statue of Liberty during construction.\n\n- Builders claimed a silent guardian watched over bridges, tunnels, and the first elevated trains."
+      },
+      {
+        "text": "The Griffin notices inventors, builders, explorers…\nand children who think differently.\n\nYears ago, I found an old notebook filled with sketches of wings, claws, and mysterious symbols.\nIt was the first sign the Griffin was real.\nSince then, I've spent years following its clues across the city."
+      },
+      {
+        "text": "And now something new has begun.\n\nThe Urban Griffin has placed 20 magical Keys around New York.\nEach one lies in a place where something amazing once started — a place the Griffin watched closely.\n\nFind all 20 Keys, connect the stories, and you will discover where the Urban Griffin is now."
+      },
+      {
+        "text": "But there's one more thing you should know.\n\nWe're not alone in this.\n\nAnother group of kids — the Sky Snatchers — are racing to find the Keys too.\nThey're loud, fast, and very determined… even if they're usually heading in the wrong direction.\nThey believe the Griffin is hiding treasure.\n(It's not. But they don't know that.)"
+      },
+      {
+        "text": "So you need to stay sharp.\nStay curious.\nStay ahead of them.\n\nMo and Steven…\nyou are now the Hunters.\n\nThe Griffin is waiting.\nThe Keys are hidden.\nAnd the Hunt begins now."
+      }
+    ]
+  },
+  "keeperVoiceGuidelines": {
+    "overallStyle": "Speaks like a real person, not a fantasy character. Warm, calm, observant. Short sentences. Light curiosity. Slight dry humor. Never dramatic or poetic.",
+    "howKeeperTalks": [
+      "Describes things he has personally noticed",
+      "Gives clues like a mentor or guide",
+      "Lets the kids figure things out instead of telling them",
+      "Treats magical events as normal parts of city life",
+      "Sounds like someone who knows New York inside out",
+      "Keeps mystery without being theatrical"
+    ],
+    "whatKeeperAvoids": [
+      "Long speeches",
+      "Overly poetic lines",
+      "Grand mystical announcements",
+      "Explaining everything",
+      "Acting all-knowing",
+      "Overusing fantasy language or big dramatic words"
+    ],
+    "emotionalFeel": [
+      "Warm but not gushy",
+      "Curious but not strange",
+      "Confident but not pushy",
+      "Gentle authority",
+      "Surprised at small things, not impressed by big things",
+      "Sounds like he cares about the kids succeeding"
+    ]
+  }
+}
+

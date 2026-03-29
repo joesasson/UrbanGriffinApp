@@ -1,0 +1,73 @@
+{
+  "tokenValue": 0.25,
+  "categories": [
+    {
+      "name": "Food Items",
+      "items": [
+        { "name": "Ice cream", "tokens": 16, "value": 4.0 },
+        { "name": "Hot chocolate", "tokens": 12, "value": 3.0 },
+        { "name": "Slushies", "tokens": 12, "value": 3.0 },
+        { "name": "Small candy bags", "tokens": 8, "value": 2.0 },
+        { "name": "Gummies", "tokens": 8, "value": 2.0 },
+        { "name": "Chocolate bars", "tokens": 8, "value": 2.0 },
+        { "name": "Hot Pretzels", "tokens": 12, "value": 3.0 },
+        { "name": "Popcorn", "tokens": 12, "value": 3.0 },
+        { "name": "Churros", "tokens": 12, "value": 3.0 },
+        { "name": "Mini donuts", "tokens": 12, "value": 3.0 },
+        { "name": "Cookies", "tokens": 8, "value": 2.0 },
+        { "name": "Fruit snacks", "tokens": 8, "value": 2.0 },
+        { "name": "Smoothies", "tokens": 16, "value": 4.0 },
+        { "name": "Pizza slice", "tokens": 14, "value": 3.5 },
+        { "name": "Soft pretzel", "tokens": 12, "value": 3.0 },
+        { "name": "Cotton candy", "tokens": 12, "value": 3.0 },
+        { "name": "Bag of chips", "tokens": 8, "value": 2.0 },
+        { "name": "Snow cones", "tokens": 12, "value": 3.0 },
+        { "name": "Milkshake", "tokens": 16, "value": 4.0 },
+        { "name": "Frozen yogurt toppings", "tokens": 8, "value": 2.0 },
+        { "name": "Cupcakes", "tokens": 12, "value": 3.0 }
+      ]
+    },
+    {
+      "name": "Non-Food Items",
+      "items": [
+        { "name": "Stickers", "tokens": 8, "value": 2.0 },
+        { "name": "Keychains", "tokens": 12, "value": 3.0 },
+        { "name": "Mini Lego bags", "tokens": 12, "value": 3.0 },
+        { "name": "Glow sticks", "tokens": 8, "value": 2.0 },
+        { "name": "Patches / pins", "tokens": 12, "value": 3.0 },
+        { "name": "Pokémon cards", "tokens": 40, "value": 10.0 },
+        { "name": "Mini puzzle toys", "tokens": 12, "value": 3.0 },
+        { "name": "Squishies", "tokens": 12, "value": 3.0 }
+      ]
+    },
+    {
+      "name": "New York Themed Prizes",
+      "items": [
+        { "name": "NYC Landmarks TOOB", "tokens": 48, "value": 12.0 },
+        { "name": "I Love NY T-Shirt (Kids)", "tokens": 40, "value": 10.0 },
+        { "name": "NYC Keychain Set (12 pack)", "tokens": 32, "value": 8.0 },
+        { "name": "NYC Yellow Taxi Toy", "tokens": 24, "value": 6.0 },
+        { "name": "Statue of Liberty Mini Figurine", "tokens": 16, "value": 4.0 },
+        { "name": "Empire State Building Mini Figurine", "tokens": 16, "value": 4.0 },
+        { "name": "NYC Sewer Coasters (set of 4)", "tokens": 36, "value": 9.0 },
+        { "name": "NYC Anthora Coffee Cup (Ceramic)", "tokens": 48, "value": 12.0 },
+        { "name": "NYC Water Tower Salt & Pepper Shakers", "tokens": 36, "value": 9.0 },
+        { "name": "New York Yankees Cap", "tokens": 40, "value": 10.0 },
+        { "name": "NYC Mini Binoculars", "tokens": 32, "value": 8.0 },
+        { "name": "King Kong Plush", "tokens": 44, "value": 11.0 },
+        { "name": "NYC Broadway Show Souvenir", "tokens": 50, "value": 12.5 },
+        { "name": "NYC Subway Map Poster", "tokens": 20, "value": 5.0 },
+        { "name": "FDNY Toy Fire Truck", "tokens": 32, "value": 8.0 },
+        { "name": "NYC Skyline Snow Globe", "tokens": 44, "value": 11.0 },
+        { "name": "NYC I Heart NY Hoodie (Kids)", "tokens": 60, "value": 15.0 },
+        { "name": "NYC Landmark Magnets Set", "tokens": 24, "value": 6.0 },
+        { "name": "NYC Street Sign Keychain", "tokens": 12, "value": 3.0 },
+        { "name": "NYC City Map", "tokens": 12, "value": 3.0 },
+        { "name": "NYC City Guidebook", "tokens": 12, "value": 3.0 },
+        { "name": "NYC map pin", "tokens": 12, "value": 3.0 },
+        { "name": "NYC map sticker", "tokens": 12, "value": 3.0 }
+      ]
+    }
+  ]
+}
+

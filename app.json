@@ -1,4 +1,61 @@
 {
-  "name": "UrbanGriffinApp",
-  "displayName": "UrbanGriffinApp"
+  "expo": {
+    "name": "The Hunt of the Urban Griffin",
+    "slug": "urban-griffin-hunt",
+    "version": "1.0.0",
+    "orientation": "portrait",
+    "icon": "./assets/icon.png",
+    "userInterfaceStyle": "dark",
+    "splash": {
+      "image": "./assets/splash.png",
+      "resizeMode": "contain",
+      "backgroundColor": "#0f2537"
+    },
+    "assetBundlePatterns": [
+      "**/*"
+    ],
+    "ios": {
+      "supportsTablet": true,
+      "bundleIdentifier": "com.urbangriffen.hunt",
+      "infoPlist": {
+        "NSLocationWhenInUseUsageDescription": "This app needs your location to verify you're at NYC landmarks during the hunt.",
+        "NSLocationAlwaysUsageDescription": "This app needs your location to track your progress through NYC landmarks."
+      }
+    },
+    "android": {
+      "adaptiveIcon": {
+        "foregroundImage": "./assets/adaptive-icon.png",
+        "backgroundColor": "#0f2537"
+      },
+      "package": "com.urbangriffen.hunt",
+      "permissions": [
+        "ACCESS_COARSE_LOCATION",
+        "ACCESS_FINE_LOCATION",
+        "android.permission.ACCESS_COARSE_LOCATION",
+        "android.permission.ACCESS_FINE_LOCATION"
+      ],
+      "config": {
+        "googleMaps": {
+          "apiKey": "YOUR_GOOGLE_MAPS_API_KEY"
+        }
+      }
+    },
+    "web": {
+      "favicon": "./assets/favicon.png"
+    },
+    "plugins": [
+      [
+        "expo-location",
+        {
+          "locationAlwaysAndWhenInUsePermission": "Allow The Hunt of the Urban Griffin to use your location to verify you're at landmarks."
+        }
+      ],
+      "expo-font"
+    ],
+    "extra": {
+      "eas": {
+        "projectId": "9ef9c3bc-0fae-41a7-a784-93a93bfc2184"
+      }
+    }
+  }
 }

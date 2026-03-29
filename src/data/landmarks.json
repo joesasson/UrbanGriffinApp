@@ -1,0 +1,251 @@
+{
+  "landmarks": [
+    {
+      "landmarkId": 1,
+      "name": "Grand Central Terminal",
+      "location": {
+        "address": "42nd Street and Park Avenue, Midtown Manhattan",
+        "coordinates": { "lat": 40.7527, "lng": -73.9772 }
+      },
+      "challenge1": {
+        "keeperOpening": "Alright Hunters… here's your first clue. If you figure this out, you will know the location of the first key. The Griffin was seen this morning flying overhead at this location. A place it cares about is waking up — and that means your first Key has appeared.",
+        "keeperAmusement": "Let's see if you can find it before the Sky Snatchers get there.",
+        "keeperClueDelivery": "Here's your first riddle. Don't rush it. Read each line carefully. The Griffin likes details.",
+        "riddle": "A sky that was painted, not borrowed from night.\nA place where the quiet can travel just right.\nFour faces agree on the same little tune,\nWhile thousands rush past it from morning till noon.",
+        "fragmentPuzzle": {
+          "type": "scrambled",
+          "content": "R A L O R G D C N A N T E",
+          "keeperInstructions": "Now hum while you solve it. Don't hurry, don't race. These letters are hiding the name of a place. One letter snuck in. It thought it was slick. Find the true name first… then point out the trick.",
+          "solution": "Grand Central",
+          "extraLetter": "G"
+        },
+        "keeperAnswerPrompt": "Alright Hunters… what's your answer? Say it clearly so I know you mean it.",
+        "keeperCorrect": "Good. Exactly right. That place changed New York more than people realize. Your first Key is connected to something hidden in there — something most people miss completely.",
+        "keeperIncorrect": "Not quite. Think about the stars, the whispers, and the clock. Try again.",
+        "keeperAfterCorrect": "You've solved the first challenge. That's two tokens earned. Now, before you head there, you've earned access to the Griffin fragments.\n\nEach Fragment hides a single letter. Answer carefully. Each one matters. When you collect all the letters from the Fragments and combine them with the extra letter you already have, they'll spell where the Key is actually waiting. Miss a detail, and the letters won't line up.",
+        "keeperTransition": "Good work. Now start heading to Grand Central. The Sky Snatchers are probably already on their way, so don't dawdle. When you're on your way, say 'Keeper, we're traveling' and I'll give you the next challenge. You'll need what you learn for what comes next.",
+        "tokenReward": 2
+      },
+      "challenge2": {
+        "keeperOpening": "Since you're on your way, learn a bit about where you're going. These questions will help you later. Don't rush them. Answer each one carefully. Each correct answer earns you one token.",
+        "questions": [
+          {
+            "id": 1,
+            "type": "factual",
+            "question": "What year did Grand Central Terminal officially open?",
+            "keeperHint": "Think about when electric trains changed New York.",
+            "answer": "1913",
+            "keeperCorrect": "Right. That's one token.",
+            "keeperIncorrect": "Not quite. Try again.",
+            "tokenReward": 1
+          },
+          {
+            "id": 2,
+            "type": "factual",
+            "question": "What material is the main concourse floor made from?",
+            "keeperHint": "Look up what covers the ground where thousands walk every day.",
+            "answer": "Marble",
+            "acceptableAnswers": ["Marble", "Tennessee marble", "marble"],
+            "keeperCorrect": "Exactly. Another token.",
+            "tokenReward": 1
+          },
+          {
+            "id": 3,
+            "type": "thinking",
+            "question": "The main ceiling shows zodiac constellations. Why do you think the designers chose to include stars instead of a regular painted ceiling?",
+            "keeperHint": "There's no single right answer here. Think about what the stars might represent. What feeling were they trying to create?",
+            "acceptableAnswers": ["To create a sense of wonder", "to make people look up", "to connect the station to the sky", "to inspire travelers"],
+            "keeperCorrect": "Good thinking. That's a token.",
+            "tokenReward": 1
+          },
+          {
+            "id": 4,
+            "type": "factual",
+            "question": "What is the name of the famous spot where people can hear each other whisper from across the room?",
+            "keeperHint": "This is a well-known feature. Search for 'whisper' and 'Grand Central.'",
+            "answer": "The Whispering Gallery",
+            "acceptableAnswers": ["The Whispering Gallery", "Whispering Arch", "whispering gallery"],
+            "keeperCorrect": "Correct. One more token.",
+            "tokenReward": 1
+          },
+          {
+            "id": 5,
+            "type": "observation-prep",
+            "question": "The constellations on the ceiling are reversed. What is the most common explanation people give for why they're backwards?",
+            "keeperHint": "Some say it was a mistake. Others say it was intentional. What's the most popular theory you can find?",
+            "answer": "God's view",
+            "acceptableAnswers": ["God's view", "viewed from above", "it was painted incorrectly", "mistake"],
+            "keeperCorrect": "Right. That's another token.",
+            "tokenReward": 1
+          },
+          {
+            "id": 6,
+            "type": "thinking",
+            "question": "Why do you think the designers placed the famous brass clock at the exact center of the main concourse?",
+            "keeperHint": "Think about what a clock does. Why put it where everyone can see it?",
+            "acceptableAnswers": ["To help travelers know the time", "to serve as a meeting point", "to be a central landmark", "to symbolize time"],
+            "keeperCorrect": "Good reasoning. One token.",
+            "tokenReward": 1
+          },
+          {
+            "id": 7,
+            "type": "observation-prep",
+            "question": "One of the windows in the Main Concourse has a hidden staircase inside it. What might be the reason for putting a staircase inside a window?",
+            "keeperHint": "This is a real detail. Think about what might be hidden up there.",
+            "acceptableAnswers": ["To access hidden rooms", "to reach maintenance areas", "to access the ceiling", "maintenance"],
+            "keeperCorrect": "Interesting. That's a token.",
+            "tokenReward": 1
+          },
+          {
+            "id": 8,
+            "type": "factual",
+            "question": "Grand Central includes a secret room used during wartime. What was this hidden space used for?",
+            "keeperHint": "Search for 'Grand Central' and 'secret' or 'wartime' or 'M42.'",
+            "answer": "M42",
+            "acceptableAnswers": ["M42", "secret bunker", "control train traffic", "protect infrastructure"],
+            "keeperCorrect": "Exactly. Another token.",
+            "tokenReward": 1
+          },
+          {
+            "id": 9,
+            "type": "observation-prep",
+            "question": "The Vanderbilt family symbol appears in several places. What shape or icon should you look for when you arrive?",
+            "keeperHint": "The Vanderbilts built this place. What symbol represents their family?",
+            "answer": "Acorn",
+            "acceptableAnswers": ["Acorn", "oak leaves", "acorns", "oak"],
+            "keeperCorrect": "Right. One more token.",
+            "tokenReward": 1
+          },
+          {
+            "id": 10,
+            "type": "connection",
+            "question": "There's a small dark patch on the ceiling that was left uncleaned on purpose. What does it show?",
+            "keeperHint": "This connects to what you'll need to find later. What was the ceiling like before it was cleaned?",
+            "answer": "How dirty the ceiling was from train smoke",
+            "acceptableAnswers": ["dirty ceiling", "soot from trains", "original condition", "smoke damage"],
+            "keeperCorrect": "Good. One token.",
+            "tokenReward": 1
+          }
+        ],
+        "keeperCompletion": "Alright. You've got the important pieces. Remember what you learned — especially about that ceiling detail. When you arrive at Grand Central, say 'Keeper, we are here' and I'll give you the final challenge. The Sky Snatchers might be close, so stay sharp. And remember: most people never look up."
+      },
+      "challenge3": {
+        "keeperOpening": "Good. You made it. I hope you paid attention during those trivia questions. Now look closely. There's something here most people miss completely. Something the Griffin noticed years ago. Find it, and you'll know where the Key is waiting. The Sky Snatchers are probably looking in the gift shop. They usually do.",
+        "keeperClueDelivery": "Here's what you're looking for. Read it carefully.",
+        "clue": "Find the place where the stars weren't fully cleaned.\nA small dark patch that tells an old story.\nStand beneath it and look around you.\nTell me what you see nearby — the detail matters.",
+        "keeperInstructions": "Take your time. Walk around. Look up. This won't be obvious, but it's definitely there. Think about what you learned about the ceiling. That detail will help you now.",
+        "hints": [
+          {
+            "cost": 1,
+            "text": "You're looking at the ceiling. But not just anywhere on the ceiling. Think about what you learned in the trivia questions."
+          },
+          {
+            "cost": 1,
+            "text": "It's in the main concourse. Look for the spot that shows how things used to be. The patch is small, but it's there on purpose."
+          },
+          {
+            "cost": 2,
+            "text": "There's one section of the constellation ceiling that was left uncleaned. It's a dark patch that shows the original soot from the trains. Stand directly beneath it and describe what landmark or feature you can see from that exact spot."
+          }
+        ],
+        "keeperProofPrompt": "When you find it, stand beneath the dark patch and tell me what you see nearby. Be specific. The wording matters.",
+        "expectedAnswers": ["zodiac constellations", "east balcony", "information booth", "clock"],
+        "keeperCorrect": "Yes, that's the spot. Most people never look up long enough to notice it. Good eye, Hunters.",
+        "keeperIncorrect": "Not quite. Stand directly beneath the dark patch on the ceiling. What can you see from that exact position? Be specific.",
+        "keeperCompletion": "Exactly right. That dark patch was left there on purpose — a reminder of how the station looked before it was restored. The Griffin noticed it years ago. And now you have too. Good eye, Hunters.\n\nYou've completed all three challenges. Well done. The Key is yours, but first you need to solve the Fragment puzzle to know exactly where it's hidden. Remember those fragments I mentioned earlier? Now's the time to put them together.",
+        "reward": "Next Week Advantage Token"
+      },
+      "fragments": {
+        "keeperOpening": "Remember the fragments I mentioned earlier? Now it's time to solve them. Each fragment hides a single letter. Answer carefully. Each one matters. When you collect all the letters from the fragments and combine them with the extra letter you already have, they'll spell where the Key is actually waiting. Miss a detail, and the letters won't line up.",
+        "questions": [
+          {
+            "id": 1,
+            "question": "What is the first letter of the word that describes the four-faced clock's location? (Hint: It's a place where you get information)",
+            "answer": "I",
+            "answerSource": "Information Booth",
+            "keeperCorrect": "Right. That's one letter: I. One token earned.",
+            "tokenReward": 1
+          },
+          {
+            "id": 2,
+            "question": "What is the first letter of the architectural style Grand Central is built in?",
+            "answer": "B",
+            "answerSource": "Beaux-Arts",
+            "keeperCorrect": "Correct. Letter: B. One token.",
+            "tokenReward": 1
+          },
+          {
+            "id": 3,
+            "question": "What is the first letter of the material the famous clock's faces are made from?",
+            "answer": "O",
+            "answerSource": "Opal",
+            "keeperCorrect": "Right. Letter: O. One token.",
+            "tokenReward": 1
+          },
+          {
+            "id": 4,
+            "question": "What is the first letter of the spot where whispers travel across the room?",
+            "answer": "W",
+            "answerSource": "Whispering Gallery",
+            "keeperCorrect": "Exactly. Letter: W. One token.",
+            "tokenReward": 1
+          },
+          {
+            "id": 5,
+            "question": "What is the first letter of the direction the main concourse primarily runs? (Hint: It runs horizontally, not vertically)",
+            "answer": "E",
+            "answerSource": "East",
+            "keeperCorrect": "Good. Letter: E. One token.",
+            "tokenReward": 1
+          },
+          {
+            "id": 6,
+            "question": "What is the first letter of the material the main concourse floor is made from?",
+            "answer": "M",
+            "answerSource": "Marble",
+            "keeperCorrect": "Right. Letter: M. One token.",
+            "tokenReward": 1
+          },
+          {
+            "id": 7,
+            "question": "What is the first letter of the family name whose symbol (acorn) appears throughout Grand Central?",
+            "answer": "V",
+            "answerSource": "Vanderbilt",
+            "keeperCorrect": "Correct. Letter: V. One token.",
+            "tokenReward": 1
+          },
+          {
+            "id": 8,
+            "question": "What is the first letter of the word for how many faces the famous clock has?",
+            "answer": "F",
+            "answerSource": "Four",
+            "keeperCorrect": "Right. Letter: F. One token.",
+            "tokenReward": 1
+          },
+          {
+            "id": 9,
+            "question": "What is the first letter of one of the architectural firms that designed Grand Central? (Hint: There were two firms - Reed & Stem and Warren & Wetmore)",
+            "answer": "W",
+            "answerSource": "Warren",
+            "keeperCorrect": "Good. Letter: W. One token.",
+            "tokenReward": 1
+          },
+          {
+            "id": 10,
+            "question": "What is the first letter of the word 'Terminal' in Grand Central Terminal?",
+            "answer": "T",
+            "answerSource": "Terminal",
+            "keeperCorrect": "Exactly. Letter: T. One token.",
+            "tokenReward": 1
+          }
+        ],
+        "keeperCombining": "Now, take all the letters you've collected from the fragments. You have: I, B, O, W, E, M, V, F, W, T. Combine them with the extra letter you already have from solving the first clue. The extra letter is: G (from 'Grand Central'). You now have: I, B, O, W, E, M, V, F, W, T, G\n\nRearrange these letters to spell a two-word location. Think about what's at the very center of the main concourse. What do people call the spot with the famous clock?",
+        "keeperStruggle": "Think about what you learned. The letters point to the center of the main concourse. What's the most famous feature there? Combine that with the word for where you get help or directions.",
+        "solution": "Information Booth",
+        "keeperFinal": "Exactly right. The Key is waiting at the Information Booth. That's the spot with the famous clock at the center of the main concourse. Go there now and claim your first Key."
+      },
+      "keyLocation": "Information Booth"
+    }
+  ]
+}
+
