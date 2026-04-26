@@ -5,11 +5,11 @@ import {
   TextInput,
   TouchableOpacity,
   StyleSheet,
-  ScrollView,
   Alert,
   Image,
   ImageBackground,
 } from 'react-native';
+import { BlurView } from 'expo-blur';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { useGame } from '../context/GameContext';
 import landmarksData from '../data/landmarks.json';
@@ -17,7 +17,8 @@ import { Images } from '../utils/images';
 import { C, GoldGlow, CyanGlow } from '../theme';
 import { useSpeech } from '../hooks/useSpeech';
 import SpeakButton from '../components/SpeakButton';
-import { playTap } from '../utils/soundEffects';
+import { playTap, playCorrect, playWrong } from '../utils/soundEffects';
+import { KeyboardAvoidingScroll } from '../components/KeyboardAvoidingScroll';
 
 const Challenge1Screen = ({ navigation, route }: any) => {
   const { landmarkId } = route.params;
@@ -29,6 +30,7 @@ const Challenge1Screen = ({ navigation, route }: any) => {
 
   const [currentStep, setCurrentStep] = useState<'intro' | 'fragment'>('intro');
   const [answer, setAnswer] = useState('');
+  const [fragmentImageRevealed, setFragmentImageRevealed] = useState(false);
 
   useEffect(() => {
     if (!challenge) return;
@@ -45,10 +47,18 @@ const Challenge1Screen = ({ navigation, route }: any) => {
     const norm = answer.toLowerCase().trim();
     const sol = challenge.fragmentPuzzle.solution.toLowerCase().trim();
     if (norm === sol) {
+      playCorrect();
+      setFragmentImageRevealed(true);
       addTokens(challenge.tokenReward);
       completeChallenge(landmarkId, 1);
-      navigation.navigate('Challenge2', { landmarkId });
+      Alert.alert('Excellent!', challenge.keeperCorrect, [
+        {
+          text: 'Continue',
+          onPress: () => navigation.navigate('Challenge2', { landmarkId }),
+        },
+      ]);
     } else {
+      playWrong();
       Alert.alert('Not Quite', challenge.keeperIncorrect);
     }
   };
@@ -116,24 +126,33 @@ const Challenge1Screen = ({ navigation, route }: any) => {
       />
       <View style={[StyleSheet.absoluteFill, styles.overlay]} />
 
-      <ScrollView contentContainerStyle={styles.scrollContent}>
+      <KeyboardAvoidingScroll contentContainerStyle={styles.scrollContent}>
         <View style={styles.content}>
           {currentStep === 'fragment' && Images.landmarkThumbnails[landmarkId] && (
-            <Image
-              source={Images.landmarkThumbnails[landmarkId]}
-              style={styles.landmarkHero}
-              resizeMode="cover"
-            />
-          )}
-          {currentStep === 'fragment' && (
-            <Text style={styles.landmarkName}>{landmark?.name}</Text>
+            <View style={styles.landmarkHeroWrap}>
+              <Image
+                source={Images.landmarkThumbnails[landmarkId]}
+                style={styles.landmarkHeroImage}
+                resizeMode="cover"
+              />
+              {!fragmentImageRevealed && (
+                <>
+                  <BlurView
+                    intensity={100}
+                    tint="dark"
+                    style={StyleSheet.absoluteFillObject}
+                  />
+                  <View style={[StyleSheet.absoluteFillObject, styles.landmarkHeroObscure]} />
+                </>
+              )}
+            </View>
           )}
           <Text style={styles.challengeTitle}>Challenge 1: Find the Landmark</Text>
 
           {currentStep === 'intro' && renderIntro()}
           {currentStep === 'fragment' && renderFragment()}
         </View>
-      </ScrollView>
+      </KeyboardAvoidingScroll>
     </SafeAreaView>
   );
 };
@@ -146,26 +165,25 @@ const styles = StyleSheet.create({
   overlay: {
     backgroundColor: 'rgba(6,13,26,0.91)',
   },
-  scrollContent: { flexGrow: 1 },
+  scrollContent: { flexGrow: 1, paddingBottom: 48 },
   content: { padding: 20 },
 
-  landmarkHero: {
+  landmarkHeroWrap: {
     width: '100%',
     height: 150,
     borderRadius: 10,
     marginBottom: 12,
     borderWidth: 1,
     borderColor: C.cyanDim,
+    overflow: 'hidden',
   },
-  landmarkName: {
-    fontSize: 22,
-    color: C.gold,
-    fontWeight: 'bold',
-    textAlign: 'center',
-    marginBottom: 8,
-    textShadowColor: C.goldGlow,
-    textShadowOffset: { width: 0, height: 0 },
-    textShadowRadius: 10,
+  landmarkHeroImage: {
+    width: '100%',
+    height: '100%',
+  },
+  landmarkHeroObscure: {
+    // Tiny bit of transparency over blur — just enough to hint at a vague shape
+    backgroundColor: 'rgba(6,13,26,0.93)',
   },
   challengeTitle: {
     fontSize: 14,

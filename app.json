@@ -14,14 +14,6 @@
     "assetBundlePatterns": [
       "**/*"
     ],
-    "ios": {
-      "supportsTablet": true,
-      "bundleIdentifier": "com.urbangriffen.hunt",
-      "infoPlist": {
-        "NSLocationWhenInUseUsageDescription": "This app needs your location to verify you're at NYC landmarks during the hunt.",
-        "NSLocationAlwaysUsageDescription": "This app needs your location to track your progress through NYC landmarks."
-      }
-    },
     "android": {
       "adaptiveIcon": {
         "foregroundImage": "./assets/adaptive-icon.png",

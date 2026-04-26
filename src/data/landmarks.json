@@ -14,15 +14,14 @@
         "riddle": "A sky that was painted, not borrowed from night.\nA place where the quiet can travel just right.\nFour faces agree on the same little tune,\nWhile thousands rush past it from morning till noon.",
         "fragmentPuzzle": {
           "type": "scrambled",
-          "content": "R A L O R G D C N A N T E",
-          "keeperInstructions": "Now hum while you solve it. Don't hurry, don't race. These letters are hiding the name of a place. One letter snuck in. It thought it was slick. Find the true name first… then point out the trick.",
-          "solution": "Grand Central",
-          "extraLetter": "G"
+          "content": "R T A N D R A N L C E G",
+          "keeperInstructions": "Hum if it helps. These letters are scrambled. Take your time and spell out the name of the place you're hunting.",
+          "solution": "Grand Central"
         },
         "keeperAnswerPrompt": "Alright Hunters… what's your answer? Say it clearly so I know you mean it.",
         "keeperCorrect": "Good. Exactly right. That place changed New York more than people realize. Your first Key is connected to something hidden in there — something most people miss completely.",
         "keeperIncorrect": "Not quite. Think about the stars, the whispers, and the clock. Try again.",
-        "keeperAfterCorrect": "You've solved the first challenge. That's two tokens earned. Now, before you head there, you've earned access to the Griffin fragments.\n\nEach Fragment hides a single letter. Answer carefully. Each one matters. When you collect all the letters from the Fragments and combine them with the extra letter you already have, they'll spell where the Key is actually waiting. Miss a detail, and the letters won't line up.",
+        "keeperAfterCorrect": "You've solved the first challenge. That's two tokens earned. Head to the landmark when you're ready—the next challenges unlock on the way and when you arrive.",
         "keeperTransition": "Good work. Now start heading to Grand Central. The Sky Snatchers are probably already on their way, so don't dawdle. When you're on your way, say 'Keeper, we're traveling' and I'll give you the next challenge. You'll need what you learn for what comes next.",
         "tokenReward": 2
       },
@@ -35,6 +34,7 @@
             "question": "What year did Grand Central Terminal officially open?",
             "keeperHint": "Think about when electric trains changed New York.",
             "answer": "1913",
+            "choices": ["1898", "1903", "1913", "1921"],
             "keeperCorrect": "Right. That's one token.",
             "keeperIncorrect": "Not quite. Try again.",
             "tokenReward": 1
@@ -46,6 +46,7 @@
             "keeperHint": "Look up what covers the ground where thousands walk every day.",
             "answer": "Marble",
             "acceptableAnswers": ["Marble", "Tennessee marble", "marble"],
+            "choices": ["Granite", "Limestone", "Marble", "Sandstone"],
             "keeperCorrect": "Exactly. Another token.",
             "tokenReward": 1
           },
@@ -54,7 +55,9 @@
             "type": "thinking",
             "question": "The main ceiling shows zodiac constellations. Why do you think the designers chose to include stars instead of a regular painted ceiling?",
             "keeperHint": "There's no single right answer here. Think about what the stars might represent. What feeling were they trying to create?",
+            "answer": "To create a sense of wonder and inspire travelers",
             "acceptableAnswers": ["To create a sense of wonder", "to make people look up", "to connect the station to the sky", "to inspire travelers"],
+            "choices": ["Because the original architect had a degree in astronomy", "To create a sense of wonder and inspire travelers", "To follow a city law requiring art in public buildings", "To make the ceiling look higher than it actually is"],
             "keeperCorrect": "Good thinking. That's a token.",
             "tokenReward": 1
           },
@@ -65,6 +68,7 @@
             "keeperHint": "This is a well-known feature. Search for 'whisper' and 'Grand Central.'",
             "answer": "The Whispering Gallery",
             "acceptableAnswers": ["The Whispering Gallery", "Whispering Arch", "whispering gallery"],
+            "choices": ["The Echo Arch", "The Sound Chamber", "The Whispering Gallery", "The Acoustic Hall"],
             "keeperCorrect": "Correct. One more token.",
             "tokenReward": 1
           },
@@ -75,6 +79,7 @@
             "keeperHint": "Some say it was a mistake. Others say it was intentional. What's the most popular theory you can find?",
             "answer": "God's view",
             "acceptableAnswers": ["God's view", "viewed from above", "it was painted incorrectly", "mistake"],
+            "choices": ["The paint dried before it could be corrected", "A perspective from God's view, looking down", "The original blueprint was printed in reverse", "The artist copied a medieval star map by accident"],
             "keeperCorrect": "Right. That's another token.",
             "tokenReward": 1
           },
@@ -83,7 +88,9 @@
             "type": "thinking",
             "question": "Why do you think the designers placed the famous brass clock at the exact center of the main concourse?",
             "keeperHint": "Think about what a clock does. Why put it where everyone can see it?",
+            "answer": "To serve as a meeting point that every traveler could spot",
             "acceptableAnswers": ["To help travelers know the time", "to serve as a meeting point", "to be a central landmark", "to symbolize time"],
+            "choices": ["To serve as a meeting point that every traveler could spot", "Because that was the only spot with enough floor space", "To mark the center for the building's structural balance", "To honor the Vanderbilt family tradition of clockmaking"],
             "keeperCorrect": "Good reasoning. One token.",
             "tokenReward": 1
           },
@@ -92,17 +99,20 @@
             "type": "observation-prep",
             "question": "One of the windows in the Main Concourse has a hidden staircase inside it. What might be the reason for putting a staircase inside a window?",
             "keeperHint": "This is a real detail. Think about what might be hidden up there.",
+            "answer": "To reach maintenance areas and access the ceiling above",
             "acceptableAnswers": ["To access hidden rooms", "to reach maintenance areas", "to access the ceiling", "maintenance"],
+            "choices": ["To give workers a dramatic view of the concourse below", "To create a hidden shortcut between train platforms", "To reach maintenance areas and access the ceiling above", "Because the architect wanted an unusual design feature"],
             "keeperCorrect": "Interesting. That's a token.",
             "tokenReward": 1
           },
           {
             "id": 8,
             "type": "factual",
-            "question": "Grand Central includes a secret room used during wartime. What was this hidden space used for?",
+            "question": "Grand Central includes a secret room used during wartime. What was this hidden space called or used for?",
             "keeperHint": "Search for 'Grand Central' and 'secret' or 'wartime' or 'M42.'",
             "answer": "M42",
-            "acceptableAnswers": ["M42", "secret bunker", "control train traffic", "protect infrastructure"],
+            "acceptableAnswers": ["M42", "secret bunker", "control train traffic", "protect infrastructure", "power converter"],
+            "choices": ["A private war room for city officials", "A wartime power converter station called M42", "A military radio broadcasting center", "A secure storage vault for gold reserves"],
             "keeperCorrect": "Exactly. Another token.",
             "tokenReward": 1
           },
@@ -113,6 +123,7 @@
             "keeperHint": "The Vanderbilts built this place. What symbol represents their family?",
             "answer": "Acorn",
             "acceptableAnswers": ["Acorn", "oak leaves", "acorns", "oak"],
+            "choices": ["A golden eagle", "A compass rose", "An acorn", "A lion's head"],
             "keeperCorrect": "Right. One more token.",
             "tokenReward": 1
           },
@@ -121,8 +132,9 @@
             "type": "connection",
             "question": "There's a small dark patch on the ceiling that was left uncleaned on purpose. What does it show?",
             "keeperHint": "This connects to what you'll need to find later. What was the ceiling like before it was cleaned?",
-            "answer": "How dirty the ceiling was from train smoke",
-            "acceptableAnswers": ["dirty ceiling", "soot from trains", "original condition", "smoke damage"],
+            "answer": "How dirty the ceiling used to be from train smoke",
+            "acceptableAnswers": ["dirty ceiling", "soot from trains", "original condition", "smoke damage", "train smoke", "how dirty"],
+            "choices": ["Where a skylight was removed decades ago", "How dirty the ceiling used to be from train smoke", "An old mural that was painted over during renovation", "Where a section of plaster collapsed and was patched"],
             "keeperCorrect": "Good. One token.",
             "tokenReward": 1
           }
@@ -132,31 +144,31 @@
       "challenge3": {
         "keeperOpening": "Good. You made it. I hope you paid attention during those trivia questions. Now look closely. There's something here most people miss completely. Something the Griffin noticed years ago. Find it, and you'll know where the Key is waiting. The Sky Snatchers are probably looking in the gift shop. They usually do.",
         "keeperClueDelivery": "Here's what you're looking for. Read it carefully.",
-        "clue": "Find the place where the stars weren't fully cleaned.\nA small dark patch that tells an old story.\nStand beneath it and look around you.\nTell me what you see nearby — the detail matters.",
+        "clue": "Find the place where the stars tell two stories at once.\nOne corner of the ceiling still whispers about the old station.\nStand beneath that spot and look around you.\nTell me what you see nearby — the detail matters.",
         "keeperInstructions": "Take your time. Walk around. Look up. This won't be obvious, but it's definitely there. Think about what you learned about the ceiling. That detail will help you now.",
         "hints": [
           {
             "cost": 1,
-            "text": "You're looking at the ceiling. But not just anywhere on the ceiling. Think about what you learned in the trivia questions."
+            "text": "Start with the main concourse ceiling—not a side hallway. The trivia was setting you up to notice something most people walk under without seeing."
           },
           {
             "cost": 1,
-            "text": "It's in the main concourse. Look for the spot that shows how things used to be. The patch is small, but it's there on purpose."
+            "text": "You're not matching a postcard photo. You're looking for one place where the ceiling doesn't quite match the rest—on purpose."
           },
           {
             "cost": 2,
-            "text": "There's one section of the constellation ceiling that was left uncleaned. It's a dark patch that shows the original soot from the trains. Stand directly beneath it and describe what landmark or feature you can see from that exact spot."
+            "text": "When you think you've found that spot, stand on the floor directly below it. From there, name something unmistakable nearby—a landmark feature, not a vague direction."
           }
         ],
-        "keeperProofPrompt": "When you find it, stand beneath the dark patch and tell me what you see nearby. Be specific. The wording matters.",
+        "keeperProofPrompt": "When you're standing in the right spot under the ceiling, what do you see around you? Name something specific enough that I'd know you're not guessing.",
         "expectedAnswers": ["zodiac constellations", "east balcony", "information booth", "clock"],
         "keeperCorrect": "Yes, that's the spot. Most people never look up long enough to notice it. Good eye, Hunters.",
-        "keeperIncorrect": "Not quite. Stand directly beneath the dark patch on the ceiling. What can you see from that exact position? Be specific.",
-        "keeperCompletion": "Exactly right. That dark patch was left there on purpose — a reminder of how the station looked before it was restored. The Griffin noticed it years ago. And now you have too. Good eye, Hunters.\n\nYou've completed all three challenges. Well done. The Key is yours, but first you need to solve the Fragment puzzle to know exactly where it's hidden. Remember those fragments I mentioned earlier? Now's the time to put them together.",
+        "keeperIncorrect": "Not quite. Get under the spot where the ceiling still shows its older story, then look around. What landmark-level detail is right there with you? Be specific.",
+        "keeperCompletion": "Exactly right. That corner was left on purpose — a quiet reminder of how the station looked before it was restored. The Griffin noticed it years ago. And now you have too. Good eye, Hunters.\n\nYou've finished this hunt. The Key for this landmark is yours. Claim it and choose your next destination when you're ready.",
         "reward": "Next Week Advantage Token"
       },
       "fragments": {
-        "keeperOpening": "Remember the fragments I mentioned earlier? Now it's time to solve them. Each fragment hides a single letter. Answer carefully. Each one matters. When you collect all the letters from the fragments and combine them with the extra letter you already have, they'll spell where the Key is actually waiting. Miss a detail, and the letters won't line up.",
+        "keeperOpening": "Remember the fragments I mentioned earlier? Now it's time to solve them. Each fragment hides a single letter. Answer carefully. Each one matters. When you've collected them all, they'll help you pin down where the Key is actually waiting. Miss a detail, and the letters won't line up.",
         "questions": [
           {
             "id": 1,
@@ -239,12 +251,280 @@
             "tokenReward": 1
           }
         ],
-        "keeperCombining": "Now, take all the letters you've collected from the fragments. You have: I, B, O, W, E, M, V, F, W, T. Combine them with the extra letter you already have from solving the first clue. The extra letter is: G (from 'Grand Central'). You now have: I, B, O, W, E, M, V, F, W, T, G\n\nRearrange these letters to spell a two-word location. Think about what's at the very center of the main concourse. What do people call the spot with the famous clock?",
+        "keeperCombining": "You've collected: I, B, O, W, E, M, V, F, W, T. Use those letters together with what you learned on the ground—especially about the middle of the main concourse.\n\nWhat two-word spot names the place with the famous four-faced clock?",
         "keeperStruggle": "Think about what you learned. The letters point to the center of the main concourse. What's the most famous feature there? Combine that with the word for where you get help or directions.",
         "solution": "Information Booth",
         "keeperFinal": "Exactly right. The Key is waiting at the Information Booth. That's the spot with the famous clock at the center of the main concourse. Go there now and claim your first Key."
       },
       "keyLocation": "Information Booth"
+    },
+    {
+      "landmarkId": 2,
+      "name": "New York Public Library",
+      "location": {
+        "address": "476 5th Avenue and 42nd Street, Midtown Manhattan",
+        "coordinates": { "lat": 40.7532, "lng": -73.9822 }
+      },
+      "challenge1": {
+        "keeperOpening": "Good work on the first Key, Hunters. The Griffin was spotted again — circling a building not far from where you started. Quiet on the outside, enormous on the inside. It's been watching this place for years. Your second Key has appeared.",
+        "keeperAmusement": "The Sky Snatchers won't figure this one out. They're not big readers.",
+        "keeperClueDelivery": "Here's your second riddle. Take your time with it.",
+        "riddle": "Two stone guards watch over a stair that rises slow.\nThe doors hold everything you need to know.\nA painted sky hangs quiet above long rows of light,\nWhile seven floors of stories sleep just out of sight.",
+        "fragmentPuzzle": {
+          "type": "scrambled",
+          "content": "R A N W Y L B O K I R E Y R",
+          "keeperInstructions": "These letters spell the name of a famous place. One letter snuck in where it doesn't belong. Find the real name first, then point out the trick.",
+          "solution": "New York Library",
+          "extraLetter": "P"
+        },
+        "keeperAnswerPrompt": "What's your answer, Hunters? Say it clearly.",
+        "keeperCorrect": "Good. That's the one. Most people walk right past those lions without knowing their names. Your second Key is connected to something hidden inside.",
+        "keeperIncorrect": "Not quite. Think about the lions. Think about what's inside. What do you do there? Try again.",
+        "keeperAfterCorrect": "Two tokens earned. Now, before you head there, you've earned access to the Griffin fragments.\n\nEach Fragment hides a single letter. Answer carefully. When you've collected all the letters and combined them with the extra letter you already have, they'll point to where the Key is waiting inside this building.",
+        "keeperTransition": "Start walking to the library on 5th Avenue at 42nd Street. The Sky Snatchers are probably reading the wrong book. When you're on your way, say 'Keeper, we're traveling' and I'll give you the next challenge.",
+        "tokenReward": 2
+      },
+      "challenge2": {
+        "keeperOpening": "Since you're on your way, let's make the walk useful. These questions will help you when you arrive. Answer carefully. Each correct answer earns a token.",
+        "questions": [
+          {
+            "id": 1,
+            "type": "factual",
+            "question": "What year did the New York Public Library's main branch open?",
+            "keeperHint": "It opened two years before Grand Central Terminal.",
+            "answer": "1911",
+            "choices": ["1895", "1902", "1911", "1923"],
+            "keeperCorrect": "Right. 1911. One token.",
+            "keeperIncorrect": "Not quite. Think about the early twentieth century.",
+            "tokenReward": 1
+          },
+          {
+            "id": 2,
+            "type": "factual",
+            "question": "What are the names of the two lion statues at the front entrance?",
+            "keeperHint": "A mayor gave them their names during the Great Depression.",
+            "answer": "Patience and Fortitude",
+            "acceptableAnswers": ["Patience and Fortitude", "Patience", "Fortitude"],
+            "choices": ["Leo and Rex", "Liberty and Justice", "Patience and Fortitude", "Atlas and Apollo"],
+            "keeperCorrect": "Patience and Fortitude. Exactly. One token.",
+            "keeperIncorrect": "Look up who named the lions and when.",
+            "tokenReward": 1
+          },
+          {
+            "id": 3,
+            "type": "factual",
+            "question": "Which New York City mayor gave the lions their names?",
+            "keeperHint": "He was mayor during the Great Depression. There's a major New York airport named after him.",
+            "answer": "Fiorello LaGuardia",
+            "acceptableAnswers": ["LaGuardia", "Fiorello LaGuardia", "Mayor LaGuardia"],
+            "choices": ["Rudolph Giuliani", "Fiorello LaGuardia", "Robert Moses", "Ed Koch"],
+            "keeperCorrect": "LaGuardia. Correct. One token.",
+            "keeperIncorrect": "Think about the airport named after a famous New York mayor.",
+            "tokenReward": 1
+          },
+          {
+            "id": 4,
+            "type": "thinking",
+            "question": "The library was built by combining three private collections. Why do you think a public library needed private donors instead of just city funding?",
+            "keeperHint": "Think about who had the most books and money in the 1890s, and what the city could or couldn't afford.",
+            "answer": "Private collections and funding were needed because the city couldn't afford to build such a large collection on its own",
+            "acceptableAnswers": ["private money was needed", "city couldn't afford it", "wealthy donors had collections", "private funding"],
+            "choices": ["Because the city was at war and couldn't spend money on books", "Because wealthy donors already had the collections and the city lacked both funds and materials", "Because private libraries were cheaper to build than public ones", "Because the city council voted against using public funds"],
+            "keeperCorrect": "Good reasoning. One token.",
+            "keeperIncorrect": "Think about who had books and money in New York in the 1890s.",
+            "tokenReward": 1
+          },
+          {
+            "id": 5,
+            "type": "factual",
+            "question": "How many floors underground are the library's book stacks?",
+            "keeperHint": "There's a lot of space you can't see from the street.",
+            "answer": "7",
+            "acceptableAnswers": ["7", "seven"],
+            "choices": ["3", "5", "7", "9"],
+            "keeperCorrect": "Seven floors underground. Correct. One token.",
+            "keeperIncorrect": "Think bigger. There's a lot of Manhattan underground.",
+            "tokenReward": 1
+          },
+          {
+            "id": 6,
+            "type": "observation-prep",
+            "question": "The famous Rose Main Reading Room has a painted ceiling. What does it depict?",
+            "keeperHint": "Think about what you'd see if the ceiling were actually a window to the outside.",
+            "answer": "A cloudy sky",
+            "acceptableAnswers": ["clouds", "cloudy sky", "sky and clouds", "painted sky", "sky"],
+            "choices": ["Zodiac constellations", "A map of Manhattan from above", "A cloudy sky with warm light", "Scenes from New York history"],
+            "keeperCorrect": "Right. A painted sky. Remember that detail — you'll need it later.",
+            "keeperIncorrect": "Think about what's usually above you when you're outside.",
+            "tokenReward": 1
+          },
+          {
+            "id": 7,
+            "type": "factual",
+            "question": "What architectural firm designed the library building? (Hint: it was a two-person partnership)",
+            "keeperHint": "Search for 'New York Public Library architects.' Different architects than Grand Central.",
+            "answer": "Carrère and Hastings",
+            "acceptableAnswers": ["Carrère and Hastings", "Carrere and Hastings", "Carrère & Hastings", "Hastings"],
+            "choices": ["McKim, Mead & White", "Carrère and Hastings", "Warren & Wetmore", "Reed & Stem"],
+            "keeperCorrect": "Carrère and Hastings. Right. One token.",
+            "keeperIncorrect": "Look it up. Different architects than Grand Central.",
+            "tokenReward": 1
+          },
+          {
+            "id": 8,
+            "type": "factual",
+            "question": "The three founding collections came from Astor and Lenox — who was the third founding family?",
+            "keeperHint": "Their name is part of the library's full official title.",
+            "answer": "Tilden",
+            "acceptableAnswers": ["Tilden", "Samuel Tilden"],
+            "choices": ["Carnegie", "Morgan", "Tilden", "Whitney"],
+            "keeperCorrect": "Tilden. Exactly. One token.",
+            "keeperIncorrect": "Their name is still in the library's full official name.",
+            "tokenReward": 1
+          },
+          {
+            "id": 9,
+            "type": "observation-prep",
+            "question": "When you walk into the first hall — called Astor Hall — what material are the floor, walls, and arched ceiling made from?",
+            "keeperHint": "Think about polished, expensive building materials used in grand New York buildings.",
+            "answer": "Marble",
+            "acceptableAnswers": ["marble", "white marble", "Vermont marble"],
+            "choices": ["Granite", "Travertine", "Marble", "Limestone"],
+            "keeperCorrect": "Marble. That's right. One token.",
+            "keeperIncorrect": "Same material as parts of Grand Central. Think polished and white.",
+            "tokenReward": 1
+          },
+          {
+            "id": 10,
+            "type": "connection",
+            "question": "The Rose Main Reading Room was closed for years and reopened in 2016 after restoration. What caused the damage?",
+            "keeperHint": "Think about what happens to painted ceilings in old buildings when they aren't maintained.",
+            "answer": "Water damage had deteriorated the painted ceiling and plaster",
+            "acceptableAnswers": ["water damage", "ceiling deterioration", "plaster damage", "water"],
+            "choices": ["A fire had damaged parts of the upper floors", "Water damage had deteriorated the painted ceiling and plaster", "The original architect's design had structural flaws", "City code violations required complete interior redesign"],
+            "keeperCorrect": "Right. Water damage. Remember what you learned about that ceiling — you'll need it soon.",
+            "keeperIncorrect": "Think about what typically damages painted ceilings in old buildings over many decades.",
+            "tokenReward": 1
+          }
+        ],
+        "keeperCompletion": "Good. You've got the important pieces. Remember what you learned — especially about that painted ceiling. When you arrive at the library, say 'Keeper, we are here' and I'll give you the final challenge. Don't spend too long staring at the lions. The Sky Snatchers might be doing the same."
+      },
+      "challenge3": {
+        "keeperOpening": "Good. You made it. Those lions have been sitting there for over a hundred years. The Griffin thinks they're amateurs. There's something about this building most visitors miss because they're too excited to get inside. Stop before you go through the doors.",
+        "keeperClueDelivery": "Here's what you're looking for.",
+        "clue": "Stand at the top of the front steps before going inside.\nLook up at the inscription carved in the stone above the central entrance.\nThree founding family names are carved there — the people who made this library possible.\nFind the name that comes first when you put all three in alphabetical order.\nThat same name appears again on the first hall you'll walk through when you go inside.\nTell me that name.",
+        "keeperInstructions": "Read the inscription carefully. The three names are all there. Sort them alphabetically and tell me which comes first. Then go inside and find the hall that shares that name.",
+        "hints": [
+          {
+            "cost": 1,
+            "text": "The three founding families are Astor, Lenox, and Tilden. Their names are carved into the stone above the main entrance."
+          },
+          {
+            "cost": 1,
+            "text": "Alphabetical order: which of the three names — Astor, Lenox, or Tilden — comes first when sorted like a dictionary?"
+          },
+          {
+            "cost": 2,
+            "text": "Astor comes first alphabetically. Look above the main entrance for the three family names. Then walk inside — the first hall you enter is named after that same family. It's a marble hall with a vaulted ceiling."
+          }
+        ],
+        "keeperProofPrompt": "What family name comes first alphabetically in the inscription — and what is the first hall inside named?",
+        "expectedAnswers": ["Astor", "Astor Hall"],
+        "keeperCorrect": "Astor. Right. Their collection started all of this. And you're standing in Astor Hall. Good eyes, Hunters.",
+        "keeperIncorrect": "Read the inscription above the central entrance. Find the three family names and sort them alphabetically. Which one comes first?",
+        "keeperCompletion": "Well done. Most people walk straight through that hall without reading a word of it. The Griffin has always stopped to read it.\n\nYou've completed all three challenges. The Key is yours — but first, solve the Fragment puzzle to find exactly where it's hidden in this building. Those letters you've been collecting? Now's the time.",
+        "reward": "Next Week Advantage Token"
+      },
+      "fragments": {
+        "keeperOpening": "You're in the right building. Now let's find exactly where the Key is waiting. Each fragment hides a single letter. Answer carefully. When you've collected all the letters and combined them with the extra letter you already have, they'll point to a specific room.",
+        "questions": [
+          {
+            "id": 1,
+            "question": "What is the first letter of the flower that names the most famous reading room in this building? (Hint: it's the word before 'Main Reading Room')",
+            "answer": "R",
+            "answerSource": "Rose",
+            "keeperCorrect": "Right. Letter: R. One token.",
+            "tokenReward": 1
+          },
+          {
+            "id": 2,
+            "question": "What is the first letter of the underground areas where millions of the library's books are stored? (Hint: they're called book ___)",
+            "answer": "S",
+            "answerSource": "Stacks",
+            "keeperCorrect": "Correct. Letter: S. One token.",
+            "tokenReward": 1
+          },
+          {
+            "id": 3,
+            "question": "What is the first letter of the stone material the lion statues are carved from?",
+            "answer": "M",
+            "answerSource": "Marble",
+            "keeperCorrect": "Right. Letter: M. One token.",
+            "tokenReward": 1
+          },
+          {
+            "id": 4,
+            "question": "What is the first letter of the founding family whose name is on the hall you walked through when you entered?",
+            "answer": "A",
+            "answerSource": "Astor",
+            "keeperCorrect": "Correct. Letter: A. One token.",
+            "tokenReward": 1
+          },
+          {
+            "id": 5,
+            "question": "What is the first letter of the lion name that means inner strength? (The other lion is Patience)",
+            "answer": "F",
+            "answerSource": "Fortitude",
+            "keeperCorrect": "Right. Letter: F. One token.",
+            "tokenReward": 1
+          },
+          {
+            "id": 6,
+            "question": "What is the first letter of the word for text carved permanently into the stone of a building's exterior?",
+            "answer": "I",
+            "answerSource": "Inscription",
+            "keeperCorrect": "Exactly. Letter: I. One token.",
+            "tokenReward": 1
+          },
+          {
+            "id": 7,
+            "question": "What is the first letter of the second architect's name in the firm that designed this building? (Hint: Carrère and ___)",
+            "answer": "H",
+            "answerSource": "Hastings",
+            "keeperCorrect": "Good. Letter: H. One token.",
+            "tokenReward": 1
+          },
+          {
+            "id": 8,
+            "question": "What is the first letter of what is painted on the ceiling of the famous reading room upstairs?",
+            "answer": "C",
+            "answerSource": "Clouds",
+            "keeperCorrect": "Right. Letter: C. One token.",
+            "tokenReward": 1
+          },
+          {
+            "id": 9,
+            "question": "What is the first letter of the word 'Reading' in Rose Main Reading Room?",
+            "answer": "R",
+            "answerSource": "Reading",
+            "keeperCorrect": "Correct. Letter: R. One token.",
+            "tokenReward": 1
+          },
+          {
+            "id": 10,
+            "question": "What is the first letter of the direction you face to see the tall windows at the far end of the famous reading room? (Hint: opposite of south)",
+            "answer": "N",
+            "answerSource": "North",
+            "keeperCorrect": "Exactly. Letter: N. One token.",
+            "tokenReward": 1
+          }
+        ],
+        "keeperCombining": "Now, take all the letters you've collected: R, S, M, A, F, I, H, C, R, N. Combine them with the extra letter you already have from solving the first clue. The extra letter is: P.\n\nYou have: R, S, M, A, F, I, H, C, R, N, P.\n\nSome of those letters are the key. Think about the room with the painted sky. Think about the flower it's named after. What are the first two words of that room's full name?\n\nR... O... S... E... what word comes right after Rose?",
+        "keeperStruggle": "You're looking for a room in this building named after a flower. The word 'Main' is in the name. Think about the painted ceiling you learned about — the cloudy sky. What is that room called?",
+        "solution": "Rose Main Reading Room",
+        "keeperFinal": "That's it. The Key is waiting in the Rose Main Reading Room. Go up to the third floor. Walk to the north end of the room and look at the carved wooden panels below the arched windows. Your second Key is hidden there. Go claim it."
+      },
+      "keyLocation": "Rose Main Reading Room"
     }
   ]
 }

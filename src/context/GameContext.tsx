@@ -45,6 +45,19 @@ export const GameProvider: React.FC<{ children: React.ReactNode }> = ({ children
   const [gameState, setGameState] = useState<GameState>(initialState);
   const [isLoaded, setIsLoaded] = useState(false);
 
+  const loadGame = useCallback(async () => {
+    try {
+      const savedState = await AsyncStorage.getItem('gameState');
+      if (savedState) {
+        setGameState(JSON.parse(savedState));
+      }
+    } catch (error) {
+      console.error('Error loading game:', error);
+    } finally {
+      setIsLoaded(true);
+    }
+  }, []);
+
   useEffect(() => {
     loadGame();
   }, [loadGame]);
@@ -68,10 +81,13 @@ export const GameProvider: React.FC<{ children: React.ReactNode }> = ({ children
   };
 
   const addKey = (landmarkId: number) => {
-    setGameState(prev => ({
-      ...prev,
-      keysCollected: [...prev.keysCollected, landmarkId],
-    }));
+    setGameState(prev => {
+      if (prev.keysCollected.includes(landmarkId)) return prev;
+      return {
+        ...prev,
+        keysCollected: [...prev.keysCollected, landmarkId],
+      };
+    });
   };
 
   const setCurrentLandmark = (landmarkId: number) => {
@@ -130,19 +146,6 @@ export const GameProvider: React.FC<{ children: React.ReactNode }> = ({ children
       console.error('Error saving game:', error);
     }
   }, [gameState]);
-
-  const loadGame = useCallback(async () => {
-    try {
-      const savedState = await AsyncStorage.getItem('gameState');
-      if (savedState) {
-        setGameState(JSON.parse(savedState));
-      }
-    } catch (error) {
-      console.error('Error loading game:', error);
-    } finally {
-      setIsLoaded(true);
-    }
-  }, []);
 
   useEffect(() => {
     if (!isLoaded) return;

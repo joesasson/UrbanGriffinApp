@@ -5,7 +5,6 @@ import {
   TextInput,
   TouchableOpacity,
   StyleSheet,
-  ScrollView,
   Alert,
   ImageBackground,
   Image,
@@ -17,7 +16,8 @@ import { Images } from '../utils/images';
 import { C, GoldGlow, CyanGlow } from '../theme';
 import { useSpeech } from '../hooks/useSpeech';
 import SpeakButton from '../components/SpeakButton';
-import { playTap } from '../utils/soundEffects';
+import { playTap, playCorrect, playWrong } from '../utils/soundEffects';
+import { KeyboardAvoidingScroll } from '../components/KeyboardAvoidingScroll';
 
 const Challenge2Screen = ({ navigation, route }: any) => {
   const { landmarkId } = route.params;
@@ -46,23 +46,33 @@ const Challenge2Screen = ({ navigation, route }: any) => {
 
   if (!challenge) return null;
 
-  const currentQuestion = challenge.questions[currentQuestionIndex];
+  const currentQuestion = challenge.questions[currentQuestionIndex] as any;
   const isLastQuestion = currentQuestionIndex === challenge.questions.length - 1;
 
-  const handleSubmit = () => {
-    const norm = answer.toLowerCase().trim();
+  const handleSubmit = (overrideAnswer?: string) => {
+    const raw = (overrideAnswer ?? answer).trim();
+    const norm = raw.toLowerCase();
     let isCorrect = false;
-    if (currentQuestion.acceptableAnswers) {
+    const hasChoices = Array.isArray(currentQuestion.choices) && currentQuestion.choices.length > 0;
+
+    if (hasChoices && currentQuestion.answer) {
+      const ans = currentQuestion.answer.toLowerCase().trim();
+      isCorrect = norm === ans || norm.includes(ans) || ans.includes(norm);
+    }
+    if (!isCorrect && currentQuestion.acceptableAnswers) {
       isCorrect = currentQuestion.acceptableAnswers.some((a: string) =>
         norm.includes(a.toLowerCase())
       );
-    } else if (currentQuestion.answer) {
-      isCorrect = norm === currentQuestion.answer.toLowerCase();
-    } else {
+    }
+    if (!isCorrect && currentQuestion.answer && !hasChoices) {
+      isCorrect = norm.includes(currentQuestion.answer.toLowerCase()) || currentQuestion.answer.toLowerCase().includes(norm);
+    }
+    if (!isCorrect && !currentQuestion.acceptableAnswers && !currentQuestion.answer) {
       isCorrect = norm.length > 5;
     }
 
     if (isCorrect) {
+      playCorrect();
       Alert.alert('Correct!', currentQuestion.keeperCorrect, [
         {
           text: 'Continue',
@@ -86,7 +96,10 @@ const Challenge2Screen = ({ navigation, route }: any) => {
         },
       ]);
     } else {
-      Alert.alert('Not Quite', currentQuestion.keeperIncorrect || 'Try again.');
+      playWrong();
+      const hasTokens = spendTokens(1);
+      const penalty = hasTokens ? ' That cost you 1 token.' : '';
+      Alert.alert('Not Quite', (currentQuestion.keeperIncorrect || 'Try again.') + penalty);
     }
   };
 
@@ -112,7 +125,7 @@ const Challenge2Screen = ({ navigation, route }: any) => {
 
       <View style={styles.letterReminder}>
         <Text style={styles.letterReminderText}>
-          Remember to write down your letter fragment and keep it somewhere safe — you'll need it for the final puzzle.
+          Pay attention to what you learn in trivia—you'll use it when you get on site.
         </Text>
       </View>
 
@@ -164,23 +177,44 @@ const Challenge2Screen = ({ navigation, route }: any) => {
           />
         </View>
 
-        <TextInput
-          style={[styles.input, currentQuestion.type === 'thinking' && styles.inputMulti]}
-          value={answer}
-          onChangeText={setAnswer}
-          placeholder="Your answer..."
-          placeholderTextColor={C.textMuted}
-          multiline={currentQuestion.type === 'thinking'}
-        />
-
-        <View style={styles.btnRow}>
-          <TouchableOpacity style={[styles.btnSecondary, styles.hintButton]} onPress={() => { playTap(); handleHint(); }}>
-            <Text style={styles.btnSecondaryText}>Hint (1 🪙)</Text>
-          </TouchableOpacity>
-          <TouchableOpacity style={[styles.btnPrimary, styles.submitButton]} onPress={() => { playTap(); handleSubmit(); }}>
-            <Text style={styles.btnPrimaryText}>Submit</Text>
-          </TouchableOpacity>
-        </View>
+        {currentQuestion.choices ? (
+          <>
+            <View style={styles.choicesContainer}>
+              {currentQuestion.choices.map((choice: string, idx: number) => (
+                <TouchableOpacity
+                  key={idx}
+                  style={styles.choiceButton}
+                  onPress={() => { playTap(); handleSubmit(choice); }}
+                >
+                  <Text style={styles.choiceLabel}>{String.fromCharCode(65 + idx)}.</Text>
+                  <Text style={styles.choiceText}>{choice}</Text>
+                </TouchableOpacity>
+              ))}
+            </View>
+            <TouchableOpacity style={[styles.btnSecondary, { marginTop: 4 }]} onPress={() => { playTap(); handleHint(); }}>
+              <Text style={styles.btnSecondaryText}>Hint (1 🪙)</Text>
+            </TouchableOpacity>
+          </>
+        ) : (
+          <>
+            <TextInput
+              style={[styles.input, currentQuestion.type === 'thinking' && styles.inputMulti]}
+              value={answer}
+              onChangeText={setAnswer}
+              placeholder="Your answer..."
+              placeholderTextColor={C.textMuted}
+              multiline={currentQuestion.type === 'thinking'}
+            />
+            <View style={styles.btnRow}>
+              <TouchableOpacity style={[styles.btnSecondary, styles.hintButton]} onPress={() => { playTap(); handleHint(); }}>
+                <Text style={styles.btnSecondaryText}>Hint (1 🪙)</Text>
+              </TouchableOpacity>
+              <TouchableOpacity style={[styles.btnPrimary, styles.submitButton]} onPress={() => { playTap(); handleSubmit(); }}>
+                <Text style={styles.btnPrimaryText}>Submit</Text>
+              </TouchableOpacity>
+            </View>
+          </>
+        )}
       </View>
     );
   };
@@ -194,13 +228,13 @@ const Challenge2Screen = ({ navigation, route }: any) => {
       />
       <View style={[StyleSheet.absoluteFill, styles.overlay]} />
 
-      <ScrollView contentContainerStyle={styles.scrollContent}>
+      <KeyboardAvoidingScroll contentContainerStyle={styles.scrollContent}>
         <View style={styles.content}>
           <Text style={styles.landmarkName}>{landmark?.name}</Text>
           <Text style={styles.challengeTitle}>Challenge 2: Trivia & Research</Text>
           {showIntro ? renderIntro() : renderQuestion()}
         </View>
-      </ScrollView>
+      </KeyboardAvoidingScroll>
     </SafeAreaView>
   );
 };
@@ -208,7 +242,7 @@ const Challenge2Screen = ({ navigation, route }: any) => {
 const styles = StyleSheet.create({
   container: { flex: 1, backgroundColor: C.bgDeep },
   overlay: { backgroundColor: 'rgba(6,13,26,0.91)' },
-  scrollContent: { flexGrow: 1 },
+  scrollContent: { flexGrow: 1, paddingBottom: 48 },
   content: { padding: 20 },
 
   landmarkHero: {
@@ -384,6 +418,35 @@ const styles = StyleSheet.create({
   inputMulti: {
     minHeight: 90,
     textAlignVertical: 'top',
+  },
+
+  choicesContainer: {
+    marginBottom: 16,
+    gap: 10,
+  },
+  choiceButton: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    backgroundColor: C.bgCard,
+    borderWidth: 1.5,
+    borderColor: C.cyan,
+    borderRadius: 10,
+    padding: 14,
+    ...CyanGlow,
+    shadowOpacity: 0.15,
+  },
+  choiceLabel: {
+    color: C.cyan,
+    fontSize: 15,
+    fontWeight: 'bold',
+    marginRight: 10,
+    minWidth: 22,
+  },
+  choiceText: {
+    color: C.textPrimary,
+    fontSize: 15,
+    flex: 1,
+    lineHeight: 22,
   },
 
   btnRow: {

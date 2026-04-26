@@ -5,7 +5,6 @@ import {
   TextInput,
   TouchableOpacity,
   StyleSheet,
-  ScrollView,
   Alert,
   ImageBackground,
   Image,
@@ -17,6 +16,7 @@ import { Images } from '../utils/images';
 import { C, GoldGlow, CyanGlow } from '../theme';
 import { useSpeech } from '../hooks/useSpeech';
 import SpeakButton from '../components/SpeakButton';
+import { KeyboardAvoidingScroll } from '../components/KeyboardAvoidingScroll';
 
 const FragmentPuzzleScreen = ({ navigation, route }: any) => {
   const { landmarkId } = route.params;
@@ -208,16 +208,15 @@ const FragmentPuzzleScreen = ({ navigation, route }: any) => {
       />
       <View style={[StyleSheet.absoluteFill, styles.overlay]} />
 
-      <ScrollView contentContainerStyle={styles.scrollContent}>
+      <KeyboardAvoidingScroll contentContainerStyle={styles.scrollContent}>
         <View style={styles.content}>
-          <Text style={styles.landmarkName}>{landmark?.name}</Text>
           <Text style={styles.challengeTitle}>Fragment Puzzle</Text>
 
           {showIntro && renderIntro()}
           {!showIntro && !showCombining && renderFragment()}
           {showCombining && renderCombining()}
         </View>
-      </ScrollView>
+      </KeyboardAvoidingScroll>
     </SafeAreaView>
   );
 };
@@ -225,19 +224,9 @@ const FragmentPuzzleScreen = ({ navigation, route }: any) => {
 const styles = StyleSheet.create({
   container: { flex: 1, backgroundColor: C.bgDeep },
   overlay: { backgroundColor: 'rgba(6,13,26,0.88)' },
-  scrollContent: { flexGrow: 1 },
+  scrollContent: { flexGrow: 1, paddingBottom: 48 },
   content: { padding: 20 },
 
-  landmarkName: {
-    fontSize: 22,
-    color: C.gold,
-    fontWeight: 'bold',
-    textAlign: 'center',
-    marginBottom: 6,
-    textShadowColor: C.goldGlow,
-    textShadowOffset: { width: 0, height: 0 },
-    textShadowRadius: 10,
-  },
   challengeTitle: {
     fontSize: 14,
     color: C.cyan,

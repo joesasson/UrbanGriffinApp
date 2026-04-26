@@ -18,6 +18,8 @@ import Animated, {
   withTiming,
 } from 'react-native-reanimated';
 import { useGame } from '../context/GameContext';
+import landmarksData from '../data/landmarks.json';
+import { getMaxUnlockedLandmarkId, HUNT_LANDMARK_TOTAL } from '../utils/huntProgress';
 import { useSpeech } from '../hooks/useSpeech';
 import SpeakButton from '../components/SpeakButton';
 import { playTap } from '../utils/soundEffects';
@@ -82,9 +84,29 @@ const StatBadge = ({ label }: { label: string }) => (
 const HomeScreen = ({ navigation }: any) => {
   const { gameState, resetGame } = useGame();
   const { speak, stop, isSpeaking } = useSpeech();
-  const hasProgress = gameState.keysCollected.length > 0;
+  const keys = gameState.keysCollected;
+  const hasProgress = keys.length > 0;
   const primaryLabel = hasProgress ? 'Continue Hunt' : 'Begin the Hunt';
   const [selected, setSelected] = useState(primaryLabel);
+
+  const maxUnlocked = getMaxUnlockedLandmarkId(keys);
+  const hasRowForNext = landmarksData.landmarks.some(l => l.landmarkId === maxUnlocked);
+  const clearedEveryShipped =
+    landmarksData.landmarks.length > 0 && landmarksData.landmarks.every(l => keys.includes(l.landmarkId));
+
+  let nextStopTitle = 'Next stop';
+  let nextStopBody = '';
+  if (keys.length >= HUNT_LANDMARK_TOTAL) {
+    nextStopTitle = 'Hunt complete';
+    nextStopBody = 'You found all twenty keys. The Griffin tips its wing to you.';
+  } else if (clearedEveryShipped && !hasRowForNext) {
+    nextStopTitle = 'More trails soon';
+    nextStopBody = `You've finished every hunt in this version. Location #${maxUnlocked} will appear on the map when the next chapter is ready.`;
+  } else if (maxUnlocked === 1 && keys.length === 0) {
+    nextStopBody = 'Location #1 is unlocked. Open the map to begin your first hunt.';
+  } else {
+    nextStopBody = `Location #${maxUnlocked} is unlocked. Open the map to start this hunt.`;
+  }
 
   const menuItems = [
     {
@@ -153,6 +175,19 @@ const HomeScreen = ({ navigation }: any) => {
           <StatBadge label={`🪙 ${gameState.tokens}`} />
           <StatBadge label={`🗝 ${gameState.keysCollected.length}/20`} />
         </View>
+
+        <TouchableOpacity
+          style={styles.nextStopCard}
+          activeOpacity={0.85}
+          onPress={() => {
+            playTap();
+            navigation.navigate('LandmarkMap');
+          }}
+        >
+          <Text style={styles.nextStopTitle}>{nextStopTitle}</Text>
+          <Text style={styles.nextStopBody}>{nextStopBody}</Text>
+          <Text style={styles.nextStopCta}>Open map →</Text>
+        </TouchableOpacity>
 
         {/* Menu cards — bottom row */}
         <View style={styles.menuRow}>
@@ -243,6 +278,43 @@ const styles = StyleSheet.create({
     elevation: 4,
   },
   badgeText: {
+    color: '#d4a827',
+    fontSize: 13,
+    fontWeight: 'bold',
+  },
+
+  nextStopCard: {
+    position: 'absolute',
+    bottom: 252,
+    left: 14,
+    right: 14,
+    backgroundColor: 'rgba(9,22,36,0.92)',
+    borderRadius: 12,
+    paddingVertical: 14,
+    paddingHorizontal: 16,
+    borderWidth: 1.5,
+    borderColor: 'rgba(0,196,228,0.55)',
+    shadowColor: '#00c4e4',
+    shadowOffset: { width: 0, height: 0 },
+    shadowOpacity: 0.35,
+    shadowRadius: 8,
+    elevation: 6,
+  },
+  nextStopTitle: {
+    color: '#00c4e4',
+    fontSize: 13,
+    fontWeight: 'bold',
+    letterSpacing: 0.8,
+    textTransform: 'uppercase',
+    marginBottom: 6,
+  },
+  nextStopBody: {
+    color: 'rgba(255,255,255,0.88)',
+    fontSize: 14,
+    lineHeight: 20,
+    marginBottom: 8,
+  },
+  nextStopCta: {
     color: '#d4a827',
     fontSize: 13,
     fontWeight: 'bold',

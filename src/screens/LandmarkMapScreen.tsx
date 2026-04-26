@@ -11,6 +11,7 @@ import {
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { useGame } from '../context/GameContext';
 import landmarksData from '../data/landmarks.json';
+import { getMaxUnlockedLandmarkId } from '../utils/huntProgress';
 import { Images } from '../utils/images';
 import { C, GoldGlow, CyanGlow } from '../theme';
 import { useSpeech } from '../hooks/useSpeech';
@@ -23,9 +24,12 @@ const LandmarkMapScreen = ({ navigation }: any) => {
     speak("Choose your next destination, Hunters. The Griffin's Keys are waiting.");
   }, [speak]);
 
+  const maxUnlockedId = getMaxUnlockedLandmarkId(gameState.keysCollected);
+
   const handleLandmarkPress = (landmarkId: number) => {
     const isCompleted = gameState.keysCollected.includes(landmarkId);
     if (isCompleted) return;
+    if (landmarkId > maxUnlockedId) return;
     setCurrentLandmark(landmarkId);
     navigation.navigate('Challenge1', { landmarkId });
   };
@@ -67,6 +71,7 @@ const LandmarkMapScreen = ({ navigation }: any) => {
             {landmarksData.landmarks.map((landmark) => {
               const isCompleted = gameState.keysCollected.includes(landmark.landmarkId);
               const isCurrentLandmark = gameState.currentLandmarkId === landmark.landmarkId;
+              const isLocked = landmark.landmarkId > maxUnlockedId;
 
               return (
                 <TouchableOpacity
@@ -74,10 +79,11 @@ const LandmarkMapScreen = ({ navigation }: any) => {
                   style={[
                     styles.landmarkBox,
                     isCompleted && styles.landmarkBoxCompleted,
-                    isCurrentLandmark && !isCompleted && styles.landmarkBoxCurrent,
+                    isCurrentLandmark && !isCompleted && !isLocked && styles.landmarkBoxCurrent,
+                    isLocked && styles.landmarkBoxLocked,
                   ]}
                   onPress={() => handleLandmarkPress(landmark.landmarkId)}
-                  disabled={isCompleted}
+                  disabled={isCompleted || isLocked}
                   activeOpacity={0.8}
                 >
                   <View style={styles.landmarkHeader}>
@@ -85,7 +91,10 @@ const LandmarkMapScreen = ({ navigation }: any) => {
                     {isCompleted && (
                       <Text style={styles.completedBadge}>✓ Completed</Text>
                     )}
-                    {isCurrentLandmark && !isCompleted && (
+                    {isLocked && (
+                      <Text style={styles.lockedBadge}>🔒 Locked</Text>
+                    )}
+                    {isCurrentLandmark && !isCompleted && !isLocked && (
                       <Text style={styles.currentBadge}>● Active</Text>
                     )}
                   </View>
@@ -113,9 +122,15 @@ const LandmarkMapScreen = ({ navigation }: any) => {
                       : 'Solve the clue to reveal this location'}
                   </Text>
 
-                  {!isCompleted && (
+                  {!isCompleted && !isLocked && (
                     <View style={styles.actionButton}>
                       <Text style={styles.actionButtonText}>Start Hunt →</Text>
+                    </View>
+                  )}
+
+                  {isLocked && (
+                    <View style={styles.lockedHint}>
+                      <Text style={styles.lockedHintText}>Finish the previous location to unlock this one.</Text>
                     </View>
                   )}
 
@@ -240,6 +255,26 @@ const styles = StyleSheet.create({
     borderColor: C.cyan,
     borderWidth: 2,
     ...CyanGlow,
+  },
+  landmarkBoxLocked: {
+    borderColor: C.borderSub,
+    opacity: 0.72,
+    ...GoldGlow,
+    shadowOpacity: 0.08,
+  },
+  lockedBadge: {
+    color: C.textMuted,
+    fontSize: 12,
+    fontWeight: 'bold',
+  },
+  lockedHint: {
+    paddingVertical: 10,
+    alignItems: 'center',
+  },
+  lockedHintText: {
+    color: C.textMuted,
+    fontSize: 12,
+    textAlign: 'center',
   },
   landmarkThumb: {
     width: '100%',

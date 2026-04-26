@@ -1,0 +1,2 @@
+# Android-only: do not upload iOS native project to EAS Build
+ios/

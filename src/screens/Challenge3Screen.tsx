@@ -5,7 +5,6 @@ import {
   TextInput,
   TouchableOpacity,
   StyleSheet,
-  ScrollView,
   Alert,
   ImageBackground,
   Image,
@@ -18,10 +17,12 @@ import { C, GoldGlow, CyanGlow } from '../theme';
 import * as Location from 'expo-location';
 import { useSpeech } from '../hooks/useSpeech';
 import SpeakButton from '../components/SpeakButton';
+import { KeyboardAvoidingScroll } from '../components/KeyboardAvoidingScroll';
+import { playTap, playCorrect, playWrong } from '../utils/soundEffects';
 
 const Challenge3Screen = ({ navigation, route }: any) => {
   const { landmarkId } = route.params;
-  const { spendTokens, completeChallenge, gameState } = useGame();
+  const { spendTokens, completeChallenge, addKey, gameState } = useGame();
   const { speak, stop, isSpeaking } = useSpeech();
 
   const landmark = landmarksData.landmarks.find(l => l.landmarkId === landmarkId);
@@ -108,20 +109,26 @@ const Challenge3Screen = ({ navigation, route }: any) => {
     const norm = answer.toLowerCase().trim();
     const isCorrect = challenge.expectedAnswers.some((e: string) => norm.includes(e.toLowerCase()));
     if (isCorrect) {
+      playCorrect();
       Alert.alert('Excellent!', challenge.keeperCorrect, [
         {
           text: 'Continue',
           onPress: () => {
             Alert.alert('Challenge Complete!', challenge.keeperCompletion, [
               {
-                text: 'Solve Fragment Puzzle',
-                onPress: () => { completeChallenge(landmarkId, 3); navigation.navigate('FragmentPuzzle', { landmarkId }); },
+                text: 'View keys',
+                onPress: () => {
+                  completeChallenge(landmarkId, 3);
+                  addKey(landmarkId);
+                  navigation.navigate('KeyCollection');
+                },
               },
             ]);
           },
         },
       ]);
     } else {
+      playWrong();
       Alert.alert('Not Quite', challenge.keeperIncorrect);
     }
   };
@@ -144,7 +151,7 @@ const Challenge3Screen = ({ navigation, route }: any) => {
           isSpeaking={isSpeaking}
         />
       </View>
-      <TouchableOpacity style={styles.btnPrimary} onPress={() => setShowIntro(false)}>
+      <TouchableOpacity style={styles.btnPrimary} onPress={() => { playTap(); setShowIntro(false); }}>
         <Text style={styles.btnPrimaryText}>I'm Ready</Text>
       </TouchableOpacity>
     </View>
@@ -158,7 +165,7 @@ const Challenge3Screen = ({ navigation, route }: any) => {
           <Text style={styles.locationSubtext}>Verify your location to begin the search</Text>
           <TouchableOpacity
             style={[styles.btnPrimary, styles.verifyButton, checkingLocation && styles.btnDisabled]}
-            onPress={checkIfAtLocation}
+            onPress={() => { playTap(); checkIfAtLocation(); }}
             disabled={checkingLocation}
           >
             <Text style={styles.btnPrimaryText}>
@@ -176,17 +183,6 @@ const Challenge3Screen = ({ navigation, route }: any) => {
 
       {isAtLocation && (
         <>
-          <View style={styles.clueBox}>
-            <Text style={styles.cluePreamble}>Your clue:</Text>
-            <Text style={styles.clueText}>{challenge.clue}</Text>
-            <SpeakButton
-              text={challenge.clue}
-              speak={speak}
-              stop={stop}
-              isSpeaking={isSpeaking}
-            />
-          </View>
-
           <View style={styles.textBox}>
             <Text style={styles.text}>{challenge.keeperInstructions}</Text>
           </View>
@@ -204,13 +200,13 @@ const Challenge3Screen = ({ navigation, route }: any) => {
           <View style={styles.btnRow}>
             <TouchableOpacity
               style={[styles.btnSecondary, styles.hintButton]}
-              onPress={handleHint}
+              onPress={() => { playTap(); handleHint(); }}
             >
               <Text style={styles.btnSecondaryText}>
                 Hint {hintLevel + 1} ({hintLevel < challenge.hints.length ? challenge.hints[hintLevel].cost : '?'} 🪙)
               </Text>
             </TouchableOpacity>
-            <TouchableOpacity style={[styles.btnPrimary, styles.submitButton]} onPress={handleSubmit}>
+            <TouchableOpacity style={[styles.btnPrimary, styles.submitButton]} onPress={() => { playTap(); handleSubmit(); }}>
               <Text style={styles.btnPrimaryText}>Submit</Text>
             </TouchableOpacity>
           </View>
@@ -233,13 +229,13 @@ const Challenge3Screen = ({ navigation, route }: any) => {
       />
       <View style={[StyleSheet.absoluteFill, styles.overlay]} />
 
-      <ScrollView contentContainerStyle={styles.scrollContent}>
+      <KeyboardAvoidingScroll contentContainerStyle={styles.scrollContent}>
         <View style={styles.content}>
           <Text style={styles.landmarkName}>{landmark.name}</Text>
           <Text style={styles.challengeTitle}>Challenge 3: On-Location Search</Text>
           {showIntro ? renderIntro() : renderChallenge()}
         </View>
-      </ScrollView>
+      </KeyboardAvoidingScroll>
     </SafeAreaView>
   );
 };
@@ -247,7 +243,7 @@ const Challenge3Screen = ({ navigation, route }: any) => {
 const styles = StyleSheet.create({
   container: { flex: 1, backgroundColor: C.bgDeep },
   overlay: { backgroundColor: 'rgba(6,13,26,0.91)' },
-  scrollContent: { flexGrow: 1 },
+  scrollContent: { flexGrow: 1, paddingBottom: 48 },
   content: { padding: 20 },
 
   landmarkName: {
@@ -328,30 +324,6 @@ const styles = StyleSheet.create({
     fontSize: 13,
     textAlign: 'center',
     marginBottom: 16,
-  },
-
-  clueBox: {
-    backgroundColor: C.bgCard,
-    padding: 20,
-    borderRadius: 10,
-    marginBottom: 18,
-    borderWidth: 1.5,
-    borderColor: C.cyan,
-    ...CyanGlow,
-  },
-  cluePreamble: {
-    color: C.cyan,
-    fontSize: 11,
-    fontWeight: 'bold',
-    letterSpacing: 1.5,
-    marginBottom: 8,
-    textTransform: 'uppercase',
-  },
-  clueText: {
-    color: C.textPrimary,
-    fontSize: 16,
-    lineHeight: 26,
-    fontStyle: 'italic',
   },
 
   inputLabel: {
