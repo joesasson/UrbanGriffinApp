@@ -1,0 +1,243 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1800" height="6200" viewBox="0 0 1800 6200">
+  <defs>
+    <style>
+      .bg { fill: #f7f1df; }
+      .ink { color: #1f2933; font-family: Georgia, "Times New Roman", serif; }
+      .label { color: #6b4e16; font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; font-size: 24px; letter-spacing: .04em; text-transform: uppercase; }
+      .title { font-size: 58px; font-weight: 700; margin: 0 0 8px; }
+      .subtitle { font-size: 28px; margin: 0; color: #44515f; }
+      .section { background: #fffaf0; border: 3px solid #b68a2c; border-radius: 22px; box-shadow: 10px 10px 0 #d5b15a; padding: 30px; }
+      .question { background: #ffffff; border: 2px solid #d6bd78; border-left: 16px solid #a16423; border-radius: 18px; padding: 26px 30px; }
+      .row { display: flex; gap: 18px; align-items: center; margin-bottom: 14px; }
+      .pill { background: #1f2933; color: white; border-radius: 999px; font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; font-size: 24px; padding: 8px 16px; }
+      .type { background: #f2d27b; color: #3b2b10; }
+      .reward { background: #0f766e; }
+      .q { font-size: 31px; font-weight: 700; line-height: 1.22; margin: 0 0 18px; }
+      .body { font-size: 25px; line-height: 1.34; margin: 0 0 12px; }
+      .small { font-size: 22px; line-height: 1.32; margin: 0 0 8px; color: #44515f; }
+      .choices { display: grid; grid-template-columns: 1fr 1fr; gap: 10px 16px; margin: 14px 0 16px; }
+      .choice { background: #f6f0df; border-radius: 12px; padding: 12px 16px; font-size: 22px; line-height: 1.25; }
+      .answer { background: #e8f5e9; border: 2px solid #69a76f; border-radius: 14px; padding: 14px 18px; margin: 14px 0; }
+      .hint { background: #eef4ff; border: 2px solid #86a9e6; border-radius: 14px; padding: 14px 18px; margin: 14px 0; }
+      .keeper { background: #fff3cd; border: 2px solid #d6a83b; border-radius: 14px; padding: 14px 18px; margin-top: 14px; }
+      .grid { display: grid; grid-template-columns: 1fr 1fr; gap: 22px; }
+      .flow { display: grid; grid-template-columns: repeat(5, 1fr); gap: 18px; margin-top: 20px; }
+      .flowbox { background: #1f2933; color: white; border-radius: 18px; padding: 18px; min-height: 86px; font-size: 22px; line-height: 1.22; text-align: center; display: flex; align-items: center; justify-content: center; }
+      strong { color: #1f2933; }
+    </style>
+  </defs>
+  <rect class="bg" width="1800" height="5200"/>
+  <foreignObject x="70" y="60" width="1660" height="6080">
+    <div xmlns="http://www.w3.org/1999/xhtml" class="ink">
+      <div class="section" style="margin-bottom: 34px;">
+        <p class="label">Landmark 1 / Challenge 2 / Trivia Structure</p>
+        <h1 class="title">Grand Central Terminal</h1>
+        <p class="subtitle">10 travel questions. Each correct answer earns 1 token. Total possible trivia reward: 10 tokens.</p>
+        <div class="flow">
+          <div class="flowbox">Keeper opening</div>
+          <div class="flowbox">10 ordered questions</div>
+          <div class="flowbox">Choices + hint</div>
+          <div class="flowbox">Answer validation</div>
+          <div class="flowbox">Keeper completion</div>
+        </div>
+      </div>
+
+      <div class="section" style="margin-bottom: 30px;">
+        <p class="label">Keeper Opening</p>
+        <p class="body">Since you&apos;re on your way, learn a bit about where you&apos;re going. These questions will help you later. Don&apos;t rush them. Answer each one carefully. Each correct answer earns you one token.</p>
+      </div>
+
+      <div class="grid">
+        <div class="question">
+          <div class="row"><span class="pill">Q1</span><span class="pill type">factual</span><span class="pill reward">+1 token</span></div>
+          <p class="q">What year did Grand Central Terminal officially open?</p>
+          <div class="choices">
+            <div class="choice">1898</div><div class="choice">1903</div><div class="choice">1913</div><div class="choice">1921</div>
+          </div>
+          <div class="answer"><p class="small"><strong>Answer:</strong> 1913</p></div>
+          <div class="hint"><p class="small"><strong>Keeper hint:</strong> Michelin NYC Guide - page 180. It was opened 10 years after it was designed</p></div>
+          <div class="keeper">
+            <p class="small"><strong>Correct:</strong> Right. That&apos;s one token.</p>
+            <p class="small"><strong>Incorrect:</strong> Not quite. Try again.</p>
+          </div>
+        </div>
+
+        <div class="question">
+          <div class="row"><span class="pill">Q2</span><span class="pill type">factual</span><span class="pill reward">+1 token</span></div>
+          <p class="q">What material is the main concourse floor made from?</p>
+          <div class="choices">
+            <div class="choice">Granite</div><div class="choice">Limestone</div><div class="choice">Marble</div><div class="choice">Sandstone</div>
+          </div>
+          <div class="answer">
+            <p class="small"><strong>Answer:</strong> Marble</p>
+            <p class="small"><strong>Acceptable:</strong> Marble; Tennessee marble; marble</p>
+          </div>
+          <div class="hint"><p class="small"><strong>Keeper hint:</strong> NYC Landmarks - page 103.</p></div>
+          <div class="keeper"><p class="small"><strong>Correct:</strong> Exactly. Another token.</p></div>
+        </div>
+
+        <div class="question">
+          <div class="row"><span class="pill">Q3</span><span class="pill type">thinking</span><span class="pill reward">+1 token</span></div>
+          <p class="q">The main ceiling shows zodiac constellations. Why do you think the designers chose to include stars instead of a regular painted ceiling?</p>
+          <div class="choices">
+            <div class="choice">Because the original architect had a degree in astronomy</div><div class="choice">To create a sense of wonder and inspire travelers</div><div class="choice">To follow a city law requiring art in public buildings</div><div class="choice">To make the ceiling look higher than it actually is</div>
+          </div>
+          <div class="answer">
+            <p class="small"><strong>Answer:</strong> To create a sense of wonder</p>
+            <p class="small"><strong>Acceptable:</strong> To create a sense of wonder; to make people look up; to connect the station to the sky; to inspire travelers</p>
+          </div>
+          <div class="hint"><p class="small"><strong>Keeper hint:</strong> There&apos;s no single right answer here. Think about what the stars might represent. What feeling were they trying to create?</p></div>
+          <div class="keeper"><p class="small"><strong>Correct:</strong> Good thinking. That&apos;s a token.</p></div>
+        </div>
+
+        <div class="question">
+          <div class="row"><span class="pill">Q4</span><span class="pill type">factual</span><span class="pill reward">+1 token</span></div>
+          <p class="q">What is the name of the famous spot where people can hear each other whisper from across the room?</p>
+          <div class="choices">
+            <div class="choice">The Echo Arch</div><div class="choice">The Sound Chamber</div><div class="choice">The Whispering Gallery</div><div class="choice">The Acoustic Hall</div>
+          </div>
+          <div class="answer">
+            <p class="small"><strong>Answer:</strong> The Whispering Gallery</p>
+            <p class="small"><strong>Acceptable:</strong> The Whispering Gallery; Whispering Arch; whispering gallery</p>
+          </div>
+          <div class="hint"><p class="small"><strong>Keeper hint:</strong> Lonely Planet NYC Guide - Page 185.</p></div>
+          <div class="keeper"><p class="small"><strong>Correct:</strong> Correct. One more token.</p></div>
+        </div>
+
+        <div class="question">
+          <div class="row"><span class="pill">Q5</span><span class="pill type">observation-prep</span><span class="pill reward">+1 token</span></div>
+          <p class="q">The constellations on the ceiling are reversed. What is the most common explanation people give for why they&apos;re backwards?</p>
+          <div class="choices">
+            <div class="choice">The paint dried before it could be corrected</div><div class="choice">A perspective from God&apos;s view, looking down</div><div class="choice">The original blueprint was printed in reverse</div><div class="choice">The artist copied a medieval star map by accident</div>
+          </div>
+          <div class="answer">
+            <p class="small"><strong>Answer:</strong> God&apos;s view</p>
+            <p class="small"><strong>Acceptable:</strong> God&apos;s view; viewed from above; it was painted incorrectly; mistake</p>
+          </div>
+          <div class="hint"><p class="small"><strong>Keeper hint:</strong> Lonely Planet NYC Guide - Page 185.</p></div>
+          <div class="keeper"><p class="small"><strong>Correct:</strong> Right. That&apos;s another token.</p></div>
+        </div>
+
+        <div class="question">
+          <div class="row"><span class="pill">Q6</span><span class="pill type">thinking</span><span class="pill reward">+1 token</span></div>
+          <p class="q">Why do you think the designers placed the famous brass clock at the exact center of the main concourse?</p>
+          <div class="choices">
+            <div class="choice">To serve as a meeting point that every traveler could spot</div><div class="choice">Because that was the only spot with enough floor space</div><div class="choice">To mark the center for the building&apos;s structural balance</div><div class="choice">To honor the Vanderbilt family tradition of clockmaking</div>
+          </div>
+          <div class="answer">
+            <p class="small"><strong>Answer:</strong> To serve as a meeting point that every traveler could spot</p>
+            <p class="small"><strong>Acceptable:</strong> To help travelers know the time; to serve as a meeting point; to be a central landmark; to symbolize time</p>
+          </div>
+          <div class="hint"><p class="small"><strong>Keeper hint:</strong> Think about what a clock does. Why put it where everyone can see it?</p></div>
+          <div class="keeper"><p class="small"><strong>Correct:</strong> Good reasoning. One token.</p></div>
+        </div>
+
+        <div class="question">
+          <div class="row"><span class="pill">Q7</span><span class="pill type">factual</span><span class="pill reward">+1 token</span></div>
+          <p class="q">At its peak in 1947, how many people used Grand Central Terminal in a single year?</p>
+          <div class="choices">
+            <div class="choice">10 million</div><div class="choice">35 million</div><div class="choice">65 million</div><div class="choice">100 million</div>
+          </div>
+          <div class="answer">
+            <p class="small"><strong>Answer:</strong> 65 million</p>
+            <p class="small"><strong>Acceptable:</strong> 65 million; 65,000,000</p>
+          </div>
+          <div class="hint"><p class="small"><strong>Keeper hint:</strong> Michelin NYC Guide - page 180.</p></div>
+          <div class="keeper"><p class="small"><strong>Correct:</strong> Interesting. That&apos;s a token.</p></div>
+        </div>
+
+        <div class="question">
+          <div class="row"><span class="pill">Q8</span><span class="pill type">factual</span><span class="pill reward">+1 token</span></div>
+          <p class="q">The large sculpture above Grand Central&apos;s main entrance is called &apos;The Glory of Commerce.&apos; Which Roman god stands at the center of it?</p>
+          <div class="choices">
+            <div class="choice">Jupiter</div><div class="choice">Neptune</div><div class="choice">Mercury</div><div class="choice">Vulcan</div>
+          </div>
+          <div class="answer">
+            <p class="small"><strong>Answer:</strong> Mercury</p>
+            <p class="small"><strong>Acceptable:</strong> Mercury; mercury</p>
+          </div>
+          <div class="hint"><p class="small"><strong>Keeper hint:</strong> Michelin NYC Guide - page 180.</p></div>
+          <div class="keeper"><p class="small"><strong>Correct:</strong> Exactly. Another token.</p></div>
+        </div>
+
+        <div class="question">
+          <div class="row"><span class="pill">Q9</span><span class="pill type">factual</span><span class="pill reward">+1 token</span></div>
+          <p class="q">Grand Central Terminal has been called the &apos;Gateway to the ___.&apos; What word completes that phrase?</p>
+          <div class="choices">
+            <div class="choice">City</div><div class="choice">World</div><div class="choice">Nation</div><div class="choice">Future</div>
+          </div>
+          <div class="answer">
+            <p class="small"><strong>Answer:</strong> Nation</p>
+            <p class="small"><strong>Acceptable:</strong> Nation; the nation</p>
+          </div>
+          <div class="hint"><p class="small"><strong>Keeper hint:</strong> Michelin NYC Guide - page 180.</p></div>
+          <div class="keeper"><p class="small"><strong>Correct:</strong> Right. One more token.</p></div>
+        </div>
+
+        <div class="question">
+          <div class="row"><span class="pill">Q10</span><span class="pill type">connection</span><span class="pill reward">+1 token</span></div>
+          <p class="q">There&apos;s a small dark patch on the ceiling that was left uncleaned on purpose. What does it show?</p>
+          <div class="choices">
+            <div class="choice">Where a skylight was removed decades ago</div><div class="choice">How dirty the ceiling used to be from train smoke</div><div class="choice">An old mural that was painted over during renovation</div><div class="choice">Where a section of plaster collapsed and was patched</div>
+          </div>
+          <div class="answer">
+            <p class="small"><strong>Answer:</strong> How dirty the ceiling used to be from train smoke</p>
+            <p class="small"><strong>Acceptable:</strong> dirty ceiling; soot from trains; original condition; smoke damage; train smoke; how dirty</p>
+          </div>
+          <div class="hint"><p class="small"><strong>Keeper hint:</strong> This connects to what you&apos;ll need to find later. What was the ceiling like before it was cleaned?</p></div>
+          <div class="keeper"><p class="small"><strong>Correct:</strong> Good. One token.</p></div>
+        </div>
+      </div>
+
+      <div class="section" style="margin-top: 34px;">
+        <p class="label">Keeper Completion</p>
+        <p class="body">Alright. You&apos;ve got the important pieces. Remember what you learned - especially about that ceiling detail. When you arrive at Grand Central, say &apos;Keeper, we are here&apos; and I&apos;ll give you the final challenge. And remember: most people never look up.</p>
+      </div>
+
+      <div class="section" style="margin-top: 34px; border-color: #0f766e; box-shadow: 10px 10px 0 #7cc7b2;">
+        <p class="label">Final Challenge / Challenge 3 / On Location</p>
+        <h2 class="title" style="font-size: 44px;">Find the Ceiling Patch</h2>
+        <div class="flow" style="grid-template-columns: repeat(4, 1fr);">
+          <div class="flowbox">Arrive at Grand Central</div>
+          <div class="flowbox">Look up at the ceiling</div>
+          <div class="flowbox">Find the dark patch</div>
+          <div class="flowbox">Claim reward</div>
+        </div>
+
+        <div class="question" style="margin-top: 26px; border-left-color: #0f766e;">
+          <div class="row"><span class="pill">Opening</span></div>
+          <p class="body">Good. You made it. Look up at the ceiling. Most people never notice what the Griffin spotted years ago.</p>
+          <div class="keeper"><p class="small"><strong>Clue delivery:</strong> Here&apos;s what you&apos;re looking for.</p></div>
+        </div>
+
+        <div class="question" style="margin-top: 22px; border-left-color: #0f766e;">
+          <div class="row"><span class="pill">Clue</span><span class="pill reward">Reward: Next Week Advantage Token</span></div>
+          <p class="q">Somewhere on the main concourse ceiling, there is a small dark patch that was left uncleaned on purpose.</p>
+          <p class="body">Find it and tell me what it&apos;s called.</p>
+          <div class="hint">
+            <p class="small"><strong>Hint cost:</strong> 2 tokens</p>
+            <p class="small"><strong>Hint:</strong> Look up at the ceiling near the northwest corner. It&apos;s darker than the rest - left that way on purpose to show what the whole ceiling used to look like before restoration.</p>
+          </div>
+        </div>
+
+        <div class="question" style="margin-top: 22px; border-left-color: #0f766e;">
+          <div class="row"><span class="pill">Proof Prompt</span></div>
+          <p class="q">What is the dark spot on the ceiling called?</p>
+          <div class="answer">
+            <p class="small"><strong>Expected answers:</strong> dark patch; the dark patch; dirty patch; soot patch; uncleaned patch</p>
+          </div>
+          <div class="keeper">
+            <p class="small"><strong>Correct:</strong> That&apos;s it. Left there on purpose - a reminder of what the whole ceiling looked like before it was cleaned. Good eye, Hunters.</p>
+            <p class="small"><strong>Incorrect:</strong> Look up. There&apos;s one small spot on the ceiling that&apos;s darker than everything around it. What would you call it?</p>
+          </div>
+        </div>
+
+        <div class="question" style="margin-top: 22px; border-left-color: #0f766e;">
+          <div class="row"><span class="pill">Completion</span></div>
+          <p class="body">That patch was left on purpose - a quiet reminder of how the station looked before it was restored. The Griffin noticed it years ago. And now you have too.</p>
+          <p class="body">The Key for this landmark is yours. Claim it and choose your next destination when you&apos;re ready.</p>
+        </div>
+      </div>
+    </div>
+  </foreignObject>
+</svg>

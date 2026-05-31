@@ -36,7 +36,7 @@ const Challenge1Screen = ({ navigation, route }: any) => {
     if (!challenge) return;
     if (currentStep === 'intro') {
       speak(`${challenge.keeperOpening} ${challenge.riddle}`);
-    } else if (currentStep === 'fragment') {
+    } else if (currentStep === 'fragment' && challenge.fragmentPuzzle?.keeperInstructions) {
       speak(challenge.fragmentPuzzle.keeperInstructions);
     }
   }, [challenge, currentStep, speak]);
@@ -45,7 +45,7 @@ const Challenge1Screen = ({ navigation, route }: any) => {
 
   const handleFragmentSubmit = () => {
     const norm = answer.toLowerCase().trim();
-    const sol = challenge.fragmentPuzzle.solution.toLowerCase().trim();
+    const sol = (challenge.fragmentPuzzle?.solution ?? '').toLowerCase().trim();
     if (norm === sol) {
       playCorrect();
       setFragmentImageRevealed(true);
@@ -91,16 +91,16 @@ const Challenge1Screen = ({ navigation, route }: any) => {
     <View style={styles.section}>
       <Text style={styles.sectionLabel}>Fragment Puzzle</Text>
       <View style={styles.textBox}>
-        <Text style={styles.text}>{challenge.fragmentPuzzle.keeperInstructions}</Text>
+        <Text style={styles.text}>{challenge.fragmentPuzzle?.keeperInstructions}</Text>
         <SpeakButton
-          text={challenge.fragmentPuzzle.keeperInstructions}
+          text={challenge.fragmentPuzzle?.keeperInstructions ?? ''}
           speak={speak}
           stop={stop}
           isSpeaking={isSpeaking}
         />
       </View>
       <View style={styles.fragmentBox}>
-        <Text style={styles.fragmentLetters}>{challenge.fragmentPuzzle.content}</Text>
+        <Text style={styles.fragmentLetters}>{challenge.fragmentPuzzle?.content}</Text>
       </View>
       <Text style={styles.inputLabel}>{challenge.keeperAnswerPrompt}</Text>
       <TextInput
